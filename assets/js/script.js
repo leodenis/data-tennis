@@ -12,15 +12,13 @@ $(function(){
 	var minutes = Math.floor((total_secondes - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
 	var secondes = Math.floor(total_secondes - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 	
-	console.log(total_secondes);
-
 	console.log(jours);
 	console.log(heures);
 	console.log(minutes);
 	console.log(secondes);
 
 
-	ts = (new Date()).getTime() +6*24*60*total_secondes*1000;
+	ts = (new Date()).getTime() + total_secondes * 1000;
 		
 	$('#countdown').countdown({
 		timestamp	: ts,

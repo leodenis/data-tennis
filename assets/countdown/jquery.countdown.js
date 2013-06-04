@@ -88,12 +88,10 @@
 			).appendTo(elem);
 			
 			if(this!="Seconds"){
-				elem.append('<span class="countDiv countDiv'+i+'"></span>');
 			}
 		});
 
 	}
-
 	// Creates an animated transition between the two numbers
 	function switchDigit(position,number){
 		
