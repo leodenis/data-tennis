@@ -90,6 +90,7 @@ margin-left: 20px;
 	width: 435px;
 	margin-top: 63px;
     margin-left: 310px;
+    height: 30px;
 }
 #containerSecondPart{
 	height: 500px;
@@ -363,10 +364,7 @@ margin-left: 20px;
 .look{
 	display: block;
 }
-#imgDjoko{
-	width:42%;
-	margin-left: 116px;
-}
+
 #containerFourPart{
 	height: 736px;
 	width: 100%;

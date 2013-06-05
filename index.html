@@ -13,6 +13,7 @@
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="assets/countdown/jquery.countdown.js"></script>
 	<script src="assets/js/script.js"></script>
+ 	<script src="js/jquery-ui.js"></script>
 
 	  <link type="text/css" href="css/fancymoves.css" media="screen" charset="utf-8" rel="stylesheet"  />
 	  <script type="text/javascript" src="js/slider.js" charset="utf-8"></script>
@@ -20,13 +21,56 @@
 	  <!-- Demo only -->
 	  <link type="text/css" href="demo/demo.css" media="screen" charset="utf-8" rel="stylesheet"  />
 	  <script type="text/javascript" src="demo/demo.js"></script>
-	  
+	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	  <!-- FancyBox scripts -->
 	  <script type="text/javascript" src="fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	  <script type="text/javascript" src="fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 	  <link rel="stylesheet" type="text/css" href="fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 
+		<script>
+		  $(function() {
+		    var availableTags = [
+		      "Novak Djokovic",
+		      "Andy Murray",
+		      "Roger Federer",
+		      "Rafael Nadal",
+		      "David Ferrer",
+		      "Tomas Berdych",
+		      "Juan Martin Del Potro<",
+		      "Jo-Wilfried Tsonga",
+		      "Richard Gasquet",
+		      "Stanislas Wawrinka"
+		    ];
+		    $( "#inputText" ).autocomplete({
+		      source: availableTags
+		    });
+		  });
 
+		 function changeUrl(){
+		      var search1 = $('#inputText').val();
+			  $('#buttonFourPart').attr('action', search1);
+
+		 }
+
+
+		 function changeImg(){
+		 	 var search2 = $('#inputText').val();
+		 	 search2 = search2.toLowerCase() 
+		 	 console.log(search2);
+
+		 	 if (search2 == 'novak djokovic') {
+
+		 	 	$('#changeImgPlayer').attr('src','img/player/djokovik.png');
+
+		 	 }
+
+		 	 else{
+		 	 	$('#changeImgPlayer').attr('src','img/player/nadal.png');
+
+		 	 }
+
+		 }
+  </script>
 
 </head>
 <body>
@@ -83,34 +127,34 @@
 
 			<div id="slider-three">
 				 <div>
-					<img id="imgDjoko" src="images/1_Novak_DJOKOVIC.png" style="width:42%;m" alt="" />
+					<img id="imgDjoko" src="images/1_Novak_DJOKOVIC.png"  alt="" />
   				</div>
   				<div>
-					<img id="imgdada" src="images/2_Andy_MURRAY.png" style="width:42%;m"alt="" />
+					<img id="imgdada" src="images/2_Andy_MURRAY.png" alt="" />
   				</div>
   				<div>
-					<img id="imgFederer" src="images/3_Roger_FEDERER.png" style="width:42%;m" alt="" />
+					<img id="imgFederer" src="images/3_Roger_FEDERER.png" alt="" />
   				</div>
   				<div>
-					<img id="imgNadal" style="width:42%;m" src="images/4_Rafael_NADAL.png" alt="" />
+					<img id="imgNadal" src="images/4_Rafael_NADAL.png" alt="" />
   				</div>
    				<div>
-					<img id="imgFerrer" style="width:42%;m"  src="images/5_David_FERRER.png" alt="" />
+					<img id="imgFerrer"  src="images/5_David_FERRER.png" alt="" />
   				</div>
    				<div>
-					<img id="imgBerdych" style="width:42%;m" src="images/6_Tomas_BERDYCH.png" alt="" />
+					<img id="imgBerdych"  src="images/6_Tomas_BERDYCH.png" alt="" />
   				</div>
   				<div>
-					<img id="imgPotro" style="width:42%;m" src="images/7_Juan_Martin_DEL_POTRO.png" alt="" />
+					<img id="imgPotro"  src="images/7_Juan_Martin_DEL_POTRO.png" alt="" />
   				</div>
    				<div>
-					<img id="imgTsonga" style="width:42%;m" src="images/8_Jo-Wilfried_TSONGA.png" alt="" />
+					<img id="imgTsonga" src="images/8_Jo-Wilfried_TSONGA.png" alt="" />
   				</div>
    				<div>
-					<img id="imgGasquet" style="width:42%;m"  src="images/9_Richard_GASQUET.png" alt="" />
+					<img id="imgGasquet"   src="images/9_Richard_GASQUET.png" alt="" />
   				</div>
    				<div>
-					<img id="imgWawrinka" style="width:42%;m" src="images/10_Stanislas_WAWRINKA.png" alt="" />
+					<img id="imgWawrinka" src="images/10_Stanislas_WAWRINKA.png" alt="" />
   				</div> 				
 
 			</div>
@@ -153,12 +197,12 @@
 	<div id="containerFourPart">
 		<div id="contentFourPart">
 			<h1 class="titleFourPart">OU RECHERCHE LE JOUEUR DE TON CHOIX</h1>
-			<form action="" id="buttonFourPart">
-				<input type="text" id="inputText" placeholder="Entrer le nom d'un joueur" style="color:red;">
-				<input type="submit" value="" id="submit" style="background-image:url(img/search.png);background-repeat:no-repeat;  background-position:6px;background-position:mar ">
+			<form action="test" method="post" id="buttonFourPart">
+				<input type="text" id="inputText" placeholder="Entrer le nom d'un joueur" onkeyup="changeImg();">
+				<input type="submit" value="" id="submit" style="background-image:url(img/search.png);background-repeat:no-repeat;  background-position:6px;background-position:mar " onclick="changeUrl();">
 			</form>
 			<div id="imgFourPart">
-				<img src="img/playerNadal.png" >
+				<img id="changeImgPlayer" src="img/playerNadal.png" >
 			</div>
 			<p class="playerNameFourPart">Roger Federer</p>
 			<div id="buttonAnalysePerformances">
