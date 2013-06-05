@@ -1,23 +1,21 @@
 /*** Overall FancyMoves Slider Styles ***/
 .mb-wrapper {
-  width: 900px; /* default, this is overridden by script settings */
-  margin: 0 auto;
   position: relative;
   left: 0;
   top: 0;
+  margin-left: 99px;
  
 }
 
 /* Panel Wrapper */
 .mb-slider, .mb-scroll {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  margin: 0 auto;
-  padding: 0;
-  position: relative;
-  left: 0;
-  top: 0;
+width: 747px;
+overflow: hidden;
+margin: 0 auto;
+padding: 0;
+position: relative;
+left: -60px;
+padding-left: 2px;
 }
 
 
@@ -55,7 +53,7 @@ a.mb-scrollButtons {
   display: block;
   width: 50px;
   height: 50px;
-  background: transparent url(../images/arrows.png) no-repeat;
+  background: transparent url(../img/arrows.png) no-repeat;
   position: absolute;
   top: 50%;
   margin-top: -29px; /* if you change the arrow images, you may have to adjust this (1/2 height of arrow image) */
@@ -66,8 +64,7 @@ a.mb-scrollButtons {
 }
 a.mb-scrollButtons.mb-left {
   background-position: left top;
-  left: 25px;
-}
+left: -104px;}
 a.mb-scrollButtons.mb-right {
   background-position: right top;
   right: 25px;
