@@ -27,6 +27,46 @@ header{
 	position: absolute;
 margin-left: -111px;	top: 90px;
 	width: 33px;
+-webkit-animation:animated_img 2s;
+
+}
+
+.imgballetennis:hover{
+	-webkit-animation:animated_imghover 2s;
+
+}
+
+
+@-webkit-keyframes animated_imghover
+	{
+0%
+	{
+	-webkit-transform: rotate(0deg);
+	}
+100%
+	{
+	-webkit-transform: rotate(360deg)
+	}
+}
+@-webkit-keyframes animated_img
+	{
+0%
+	{
+	-webkit-transform: rotate(0deg);
+	}
+100%
+	{
+	-webkit-transform: rotate(360deg)
+	}
+}
+.terraintennis{
+  -webkit-animation-name: opacity;
+  -webkit-animation-duration: 5s;
+}
+@-webkit-keyframes opacity {
+  0%   { opacity: 0; }
+  10%  { opacity: 0.5; }
+  100% { opacity: 1; }
 }
 
 #containerFirstPart{	
