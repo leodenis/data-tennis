@@ -1,23 +1,32 @@
 
 
 
-		  $(function() {		
+		  $(function() {	
 			if($.browser.name == 'msie') {
 				$('.terraintennis').remove();
 				var changeterrain = document.getElementById("courttennis"); 
 				changeterrain.className= "look"; 
 				$(".imgballetennis").css("margin-left", "369px");
-				$("#lueur1").css({"width":"92px","margin-left":"74px"});
-				$("#lueur3").css({"width":"93px"});
+				// $("#lueur1").css({"width":"92px","margin-left":"74px"});
+				// $("#lueur3").css({"width":"93px"});
 
 			} 
 			else if($.browser.name == 'firefox'){
 				var changeterrain = document.getElementById("courttennis"); 
 				changeterrain.className= "hide"; 
-				$(".terraintennis").css("margin-top", "41px");
-				$("#lueur1").css({"margin-top":"-99px","width":"93px","height":"92px","margin-left":"74px"});
-				$("#lueur2").css("height", "92px");
-				$("#lueur3").css({"width":"93px","height":"92px"});
+				// $(".terraintennis").css("margin-top", "-7px");
+				// $("#lueur1").css({"margin-top":"-99px","width":"93px","height":"92px","margin-left":"74px"});
+				// $("#lueur2").css("height", "92px");
+				// $("#lueur3").css({"width":"93px","height":"92px"});
+
+			}
+			else if($.browser.name == 'safari'){
+				var changeterrain = document.getElementById("courttennis"); 
+				changeterrain.className= "hide"; 
+				// $(".terraintennis").css("margin-top", "41px");
+				// $("#lueur1").css({"margin-top":"-99px","width":"93px","height":"92px","margin-left":"74px"});
+				// $("#lueur2").css("height", "92px");
+				// $("#lueur3").css({"width":"93px","height":"92px"});
 
 			}
 			else{
