@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css/resetG.css">
 	<link rel="stylesheet" type="text/css" href="css/webapp.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="javascript/webapp.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -14,114 +14,15 @@
 				<input type="text" placeholder="Entrer le nom d'un joueur">
 			</div>
 			<ul>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li class="click">
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
-				<li>
-					<img src="img/player/thumbnails/nadal.jpg">
-					<p>NADAL Rafael</p>
-					<p>rank : 5</p>
-				</li>
+				
 			</ul>
-			<div>
+			<div class="scrollbar">
 				<div></div>
 			</div>
 		</nav>
 		<article>
 			<header>
-				<img src="img/player/nadal.png"/>
+				<img src="img/player/4_Rafael_NADAL.png"/>
 				<div>
 					<h1>Nadal Rafael</h1>
 					<div>
@@ -146,7 +47,7 @@
 			</header>
 			<nav>
 				<ul>
-					<li>R&eacute;sum&eacute; 2013</li>
+					<li class="active">R&eacute;sum&eacute; 2013</li>
 					<li>R&eacute;sum&eacute; carri&egrave;re</li>
 					<li>Titres</li>
 					<li>Finales</li>
@@ -154,156 +55,82 @@
 				</ul>
 			</nav>
 			<section id="resume2013">
-				<div>
-					<h3>Victoire / D&eacute;faites</h3>
-					<p>Gagn&eacute;</p>
-					<p>Perdu</p>
 					<div>
-						<div class="statsBarConatiner">
-							<p>Tous</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
+						<h3>Victoire / D&eacute;faites</h3>
+						<p>Gagn&eacute;</p>
+						<p>Perdu</p>
+						<div>
+							<div>
+								<div class="statsBarConatiner">
+									<p>Tous</p>
+									<div class="tous statsBar" data-gagner="120" data-perdu="36">
+									</div>
 								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
+								<div class="statsBarConatiner">
+									<p>Grand Chelem</p>
+									<div class="grdchelem statsBar" data-gagner="250" data-perdu="10">
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="statsBarConatiner">
-							<p>Grand Chelem</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
+								<div class="statsBarConatiner">
+									<p>Masters 1000</p>
+									<div class="masters1000 statsBar" data-gagner="80" data-perdu="80">
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="statsBarConatiner">
-							<p>Masters 1000</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
+							<div>
+								<div class="statsBarConatiner">
+									<p>Tie Breaks</p>
+									<div class="tieBreaks statsBar" data-gagner="80" data-perdu="80">
+									</div>
 								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
+								<div class="statsBarConatiner">
+									<p>Contre un top 10</p>
+									<div class="vsTop10 statsBar" data-gagner="80" data-perdu="80">
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="statsBarConatiner">
-							<p>Tie Breaks</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
+								<div class="statsBarConatiner">
+									<p>Dernier set</p>
+									<div class="dernierSet statsBar" data-gagner="80" data-perdu="80">
+									</div>
 								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
+								<div class="statsBarConatiner">
+									<p>Apr&egrave;s avoir gagner le 1er set</p>
+									<div class="afterWin1Set statsBar" data-gagner="80" data-perdu="80">
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="statsBarConatiner">
-							<p>Contre un top 10</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
+								<div class="statsBarConatiner">
+									<p>Apr&egrave;s avoir perdu le 1er set</p>
+									<div class="afterLost1Set statsBar" data-gagner="80" data-perdu="80">
+									</div>
 								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-							</div>
-						</div>
-						<div class="statsBarConatiner">
-							<p>Dernier set</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-							</div>
-						</div>
-						<div class="statsBarConatiner">
-							<p>Apr&egrave;s avoir gagner le 1er set</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-							</div>
-						</div>
-						<div class="statsBarConatiner">
-							<p>Apr&egrave;s avoir perdu le 1er set</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-							</div>
-						</div>
-						<div class="statsBarConatiner">
-							<p>Contre un droitier</p>
-							<div class="statsBar">
-								<div>
-									<div></div>
-									<p>80</p>
-								</div>
-								<div></div>
-								<div>
-									<div></div>
-									<p>80</p>
+								<div class="statsBarConatiner">
+									<p>Contre un droitier</p>
+									<div class="vsDroitier statsBar" data-gagner="80" data-perdu="80">
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div>
-					<h3>Surface</h3>
 					<div>
-						<img src="img/terrainDur.png"/>
-						<div></div>
-						<div></div>
+						<h3>Surface</h3>
+						<div>
+							<img src="img/terrainDur.png"/>
+							<div></div>
+							<div class="statsRounded dur" data-pourcent="30"></div>
+						</div>
+						<div>
+							<img src="img/terrainClay.png"/>
+							<div class="left"></div>
+							<div class="statsRounded clay" data-pourcent="60"></div>
+						</div>
+						<div>
+							<img src="img/terrainGrass.png"/>
+							<div></div>
+							<div class="statsRounded grass" data-pourcent="75"></div>
+						</div>
 					</div>
-					<div>
-						<img src="img/terrainDur.png"/>
-						<div></div>
-						<div></div>
-					</div>
-					<div>
-						<img src="img/terrainDur.png"/>
-						<div></div>
-						<div></div>
-					</div>
+				<div class="scrollbar">
+					<div></div>
 				</div>
 			</section>
 			<section id="resumeCarriere">
@@ -317,6 +144,7 @@
 		</article>
 	</div>
 
+	<script type="text/javascript" src="javascript/webapp.js"></script>
 
 </body>
 </html>
