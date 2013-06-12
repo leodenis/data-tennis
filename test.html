@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		canvas{
+			width:208px;
+			height:208px;
+		}
+	</style>
+</head>
+<body>
+	<canvas> </canvas>
+	<script type="text/javascript">
+
+        var canvas = document.querySelector('canvas');
+        canvas.width = 208;
+        canvas.height = 208;
+        
+        var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.arc(95, 50, 25, 0*Math.PI, 2*Math.PI); 
+        ctx.stroke();
+        ctx.fill();
+
+	</script>
+</body>
+</html>
