@@ -63,11 +63,18 @@
 
 		 function changeUrl(){
 		      var search1 = $('#inputText').val();
-			  search1 = search1.replace(/ /g,"");
-			  search1 = search1.toLowerCase() 
+		      if(search1 == ''){
+				  $('#buttonFourPart').attr('action', '#containerFourPart');
+		      }else{
+			 	 //  search1 = search1.replace(/ /g,"");
+				  // search1 = search1.toLowerCase() 
+					var elem = search1.split(' ');
+					var taille = elem.length - 1;
+					search1 = elem[taille];
+				  $('#buttonFourPart').attr('action', 'index.html?'+search1);
+				  $('#buttonAnalysePerf').attr('href', 'index.html?'+search1);     	
+		      }
 
-			  $('#buttonFourPart').attr('action', search1);
-			  $('#buttonAnalysePerf').attr('href', search1);
 
 		 }
 
@@ -184,7 +191,7 @@
 		 	 }
 		 	 else{
 		 	 	$('#changeImgPlayer').attr('src','img/player/joueur_inconnu.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Joueur Inconnu";
+		 	 	document.getElementById("changeNamePlayer").innerHTML ="Unknow player";
 		 	 	$("#submit").attr('disabled', 'disabled');
 		 	 	$("#buttonAnalysePerf").attr('disabled', 'disabled');
 
@@ -298,7 +305,7 @@
 		 	 }
 		 	 else{
 		 	 	$('#changeImgPlayer').attr('src','img/player/joueur_inconnu.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Joueur Inconnu"; 
+		 	 	document.getElementById("changeNamePlayer").innerHTML ="Unknow player"; 
 		 	 	$("#submit").attr('disabled', 'disabled');
 		 	 	$("#buttonAnalysePerf").attr('disabled', 'disabled');
 

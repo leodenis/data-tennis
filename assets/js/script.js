@@ -4,7 +4,7 @@ $(function(){
 		newYear = true;
 
 	var date_actuelle = new Date();
-	var date_evenement = new Date("Jul 25 10:00:00 2013");
+	var date_evenement = new Date("Jun 24 10:00:00 2013");
 	var total_secondes = Math.floor((date_evenement - date_actuelle) / 1000);
 
 	var jours = Math.floor(total_secondes / (60 * 60 * 24));
