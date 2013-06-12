@@ -6,6 +6,8 @@
 
 
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery-browser.js"></script>
+
 	<script src="assets/countdown/jquery.countdown.js"></script>
 	<script src="assets/js/script.js"></script>
  	<script src="js/jquery-ui.js"></script>
@@ -17,236 +19,13 @@
 	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
     <link rel="stylesheet" href="css/home.css" type="text/css" media="screen">
     <link rel="stylesheet" href="assets/countdown/jquery.countdown.css" />
-
-
+	
+	<script type="text/javascript" src="js/change.js"></script>
 	<script type="text/javascript" src="js/localscroll/jquery.localscroll.js"></script>
 	<script type="text/javascript" src="js/localscroll/jquery.scrollTo.js"></script>
     
 	<script type="text/javascript" src="js/lancement.js"></script><!-- permet le lancement de la fonction de scroll -->
 
-
-		<script>
-		  $(function() {
-		    var availableTags = [
-		      "Novak Djokovic",
-		      "Andy Murray",
-		      "Roger Federer",
-		      "Rafael Nadal",
-		      "David Ferrer",
-		      "Tomas Berdych",
-		      "Juan Martin Del Potro",
-		      "Jo-Wilfried Tsonga",
-		      "Richard Gasquet",
-		      "Stanislas Wawrinka",
-		      "Marin Cilic",
-		      "Janko Tipsarevic",
-		      "Nicolas Almagro",
-		      "Tomy Haas",
-		      "SKei Nishikori",
-		      "Milos Raonic",
-		      "Juan Monaco",
-		      "Gilles Simon",
-		      "Philipp Kohlschereiber",
-		      "Sam Querrey",
-
-		    ];
-		    $( "#inputText" ).autocomplete({
-		      source: availableTags
-		    });
-		  });
-
-		 function changeUrl(){
-		      var search1 = $('#inputText').val();
-			  $('#buttonFourPart').attr('action', search1);
-
-		 }
-
-
-		 function changeImg(){
-		 	var search3='';
-		 	$( "#inputText" ).autocomplete({
-			  select: function( event, ui ) {
-			  	var search3 = ui.item.label;
-			  	search3 = search3.toLowerCase() 
-
-
-		 	 if (search3 == 'novak djokovic') {
-		 	 	$('#changeImgPlayer').attr('src','img/player/1_Novak_DJOKOVIC.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Novak Djokovic"; 
-		 	 }
-		 	 else if (search3 == 'andy Murray'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/2_Andy_MURRAY.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Andy Murray"; 
-		 	 }
-		 	 else if (search3 == 'roger federer'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/3_Roger_FEDERER.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Roger Federer"; 
-		 	 }
-		 	 else if (search3 == 'rafael nadal'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/4_Rafael_NADAL.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Rafael Nadal"; 
-		 	 }
-		 	 else if (search3 == 'david ferrer'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/5_David_FERRER.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="David Ferrer"; 
-		 	 }
-		 	 else if (search3 == 'tomas berdych'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/6_Tomas_BERDYCH.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Tomas Berdych"; 
-		 	 }
-		 	 else if (search3 == 'juan martin del potro'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/7_Juan_Martin_DEL_POTRO.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="juan Martin Del Potro"; 
-		 	 }
-		 	 else if (search3 == 'jo-wilfried tsonga'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/8_Jo-Wilfried_TSONGA.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Jo-Wilfried Tsonga"; 
-		 	 }
-		 	 else if (search3 == 'richard gasquet'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/9_Richard_GASQUET.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Richard Gasquet"; 
-		 	 }
-		 	 else if (search3 == 'stanislas wawrinka'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/10_Stanislas_WAWRINKA.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Stanislas Wawrinka"; 
-		 	 }
-		 	 else if (search3 == 'marin cilic'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/11_MARIN_CILIC.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Marin Cilic"; 
-		 	 }
-		 	 else if (search3 == 'janko tipsarevic'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/13_JANKO_TIPSAREVIC.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Janko Tipsarevic"; 
-		 	 }
-		 	 else if (search3 == 'nicolas almagro'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/13_NICOLAS_ALMAGRO.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Nicolas Almagro"; 
-		 	 }
-		 	 else if (search3 == 'tomy haas'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/14_TOMMY_HAAS.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Tomy Haas"; 
-		 	 }
-		 	 else if (search3 == 'kei nishikori'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/15_KEI_NISHIKORI.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="SKei Nishikori"; 
-		 	 }
-		 	 else if (search3 == 'milos raonic'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/16_MILOS_RAONIC.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Milos Raonic"; 
-		 	 }
-		 	 else if (search3 == 'juan monaco'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/17_JUAN_MONACO.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Juan Monaco"; 
-		 	 }
-		 	 else if (search3 == 'gilles simon'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/18_GILLES_SIMON.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Gilles Simon"; 
-		 	 }
-		 	 else if (search3 == 'philipp kohlschreiber'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/19_PHILIPP_KOHLSCHREIBER.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Philipp Kohlschereiber"; 
-		 	 }
-		 	 else if (search3 == 'sam querrey'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/20_SAM_QUERREY.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Sam Querrey"; 
-		 	 }
-		 	 else{
-		 	 	$('#changeImgPlayer').attr('src','img/player/4_Rafael_NADAL.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Rafael Nadal"; 
-		 	 }
-			  }
-			});
-
-		 	 var search2 = $('#inputText').val();
-		 	 search2 = search2.toLowerCase() 
-
-		 	 if (search2 == 'novak djokovic') {
-		 	 	$('#changeImgPlayer').attr('src','img/player/1_Novak_DJOKOVIC.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Novak Djokovic"; 
-		 	 }
-		 	 else if (search2 == 'andy Murray'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/2_Andy_MURRAY.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Andy Murray"; 
-		 	 }
-		 	 else if (search2 == 'roger federer'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/3_Roger_FEDERER.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Roger Federer"; 
-		 	 }
-		 	 else if (search2 == 'rafael nadal'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/4_Rafael_NADAL.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Rafael Nadal"; 
-		 	 }
-		 	 else if (search2 == 'david ferrer'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/5_David_FERRER.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="David Ferrer"; 
-		 	 }
-		 	 else if (search2 == 'tomas berdych'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/6_Tomas_BERDYCH.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Tomas Berdych"; 
-		 	 }
-		 	 else if (search2 == 'juan martin del potro'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/7_Juan_Martin_DEL_POTRO.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="juan Martin Del Potro"; 
-		 	 }
-		 	 else if (search2 == 'jo-wilfried tsonga'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/8_Jo-Wilfried_TSONGA.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Jo-Wilfried Tsonga"; 
-		 	 }
-		 	 else if (search2 == 'richard gasquet'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/9_Richard_GASQUET.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Richard Gasquet"; 
-		 	 }
-		 	 else if (search2 == 'stanislas wawrinka'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/10_Stanislas_WAWRINKA.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Stanislas Wawrinka"; 
-		 	 }
-		 	 else if (search2 == 'marin cilic'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/11_MARIN_CILIC.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Marin Cilic"; 
-		 	 }
-		 	 else if (search2 == 'janko tipsarevic'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/12_JANKO_TIPSAREVIC.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Janko Tipsarevic"; 
-		 	 }
-		 	 else if (search2 == 'nicolas almagro'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/13_NICOLAS_ALMAGRO.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Nicolas Almagro"; 
-		 	 }
-		 	 else if (search2 == 'tomy haas'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/14_TOMMY_HAAS.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Tomy Haas"; 
-		 	 }
-		 	 else if (search2 == 'kei nishikori'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/15_KEI_NISHIKORI.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="SKei Nishikori"; 
-		 	 }
-		 	 else if (search2 == 'milos raonic'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/16_MILOS_RAONIC.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Milos Raonic"; 
-		 	 }
-		 	 else if (search2 == 'juan monaco'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/17_JUAN_MONACO.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Juan Monaco"; 
-		 	 }
-		 	 else if (search2 == 'gilles simon'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/18_GILLES_SIMON.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Gilles Simon"; 
-		 	 }
-		 	 else if (search2 == 'philipp kohlschreiber'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/19_PHILIPP_KOHLSCHREIBER.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Philipp Kohlschereiber"; 
-		 	 }
-		 	 else if (search2 == 'sam querrey'){
-		 	 	$('#changeImgPlayer').attr('src','img/player/20_SAM_QUERREY.png');		 	 	
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Sam Querrey"; 
-		 	 }
-		 	 else{
-		 	 	$('#changeImgPlayer').attr('src','img/player/4_Rafael_NADAL.png');
-		 	 	document.getElementById("changeNamePlayer").innerHTML ="Rafael Nadal"; 
-		 	 }
-
-		 }
-  </script>
 
 </head>
 <body>
@@ -266,15 +45,16 @@
 		</div>
 
 		<div id="allButton">
-			<a href="#containerSecondPart"><div id="buttonWimbledon"><p class="wimb">décompte wimbledon</p></div></a><a href="#containerThirdPart"><div id="buttonStatistiques"><p class="stat">Statistiques des joueurs</p></div></a>
-
-
-			<!-- <a id="buttonFirstPart" href="">DECOMPTE WIMBLEDON</a>
-			<a id="buttonFirstPart" href="">STATISTIQUES DES JOUEURS</a> -->
-
+			<a href="#containerSecondPart" style='text-decoration:none;'><div id="buttonWimbledon"><p class="wimb">décompte wimbledon</p></div></a><a href="#containerThirdPart" style='text-decoration:none;'><div id="buttonStatistiques"><p class="stat">Statistiques des joueurs</p></div></a>
 		</div>
-	<img style="margin-left: 92px;"src="img/terraintennis.png">
+	<img id="courttennis" src="img/terraintennis.png">
+	<video class="terraintennis" autoplay="true" style="margin-top:-1px;">
+	  <source src="img/video/intro.mp4" type="video/mp4" />
+	  <source src="img/video/intro.webm" type="video/webm" />
+	   <source src="img/video/intro.ogv" type="video/ogg" />
 
+	<img id="courttennis" src="img/terraintennis.png">
+	</video>
 	</div>
 
 	<div id="containerSecondPart">
@@ -289,6 +69,10 @@
 		<div id="contentCompteur">
 			<div id="countdown"></div>
 			<div id="writeCountDown">
+			<div id="lueur1"></div>
+			<div id="lueur2"></div>
+			<div id="lueur3"></div>
+
 				<span class="days">days</span>
 				<span class="hours">hours</span>
 				<span class="minutes">minutes</span>
@@ -374,15 +158,15 @@
 		<div id="contentFourPart">
 			<h1 class="titleFourPart">OU RECHERCHE LE JOUEUR DE TON CHOIX</h1>
 			<form action="test" method="post" id="buttonFourPart">
-				<input type="text" id="inputText" placeholder="Entrer le nom d'un joueur" onkeyup="changeImg();">
-				<input type="submit" value="" id="submit" style="background-image:url(img/search.png);background-repeat:no-repeat;  background-position:6px;background-position:mar " onclick="changeUrl();">
+				<input type="text" id="inputText" placeholder="Entrer le nom d'un joueur" onkeyup="changeImg();" value="">
+				<input type="submit"  disabled="disabled" value="" id="submit" style="background-image:url(img/search.png);background-repeat:no-repeat;  background-position:6px;background-position:mar " onclick="changeUrl();">
 			</form>
 			<div id="imgFourPart">
-				<img id="changeImgPlayer" src="img/playerNadal.png" >
+				<img id="changeImgPlayer" src="img/player/joueur_inconnu.png" >
 			</div>
-			<p id='changeNamePlayer' class="playerNameFourPart">Roger Federer</p>
-			<div id="buttonAnalysePerformances">
-				<a href="" style="text-decoration:none;"><p class="analysePerformances">ANALYSER SES PERFORMANCES</p></a>
+			<p id='changeNamePlayer' class="playerNameFourPart">Joueur inconnu</p>
+			<div id="buttonAnalysePerformances" >
+				<a href="#" onclick="changeUrl()" id="buttonAnalysePerf" style="text-decoration:none;" ><p class="analysePerformances" >ANALYSER SES PERFORMANCES</p></a>
 			</div>
 		</div>
 	

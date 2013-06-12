@@ -1,5 +1,5 @@
 body{
-		background: #151517;
+		background: #151515;
 
 }
 
@@ -27,7 +27,39 @@ header{
 	position: absolute;
 margin-left: -111px;	top: 90px;
 	width: 33px;
+-webkit-animation:animated_img 2s;
+
 }
+
+.imgballetennis:hover{
+	-webkit-animation:animated_imghover 2s;
+
+}
+
+
+@-webkit-keyframes animated_imghover
+	{
+0%
+	{
+	-webkit-transform: rotate(0deg);
+	}
+100%
+	{
+	-webkit-transform: rotate(360deg)
+	}
+}
+@-webkit-keyframes animated_img
+	{
+0%
+	{
+	-webkit-transform: rotate(0deg);
+	}
+100%
+	{
+	-webkit-transform: rotate(360deg)
+	}
+}
+
 
 #containerFirstPart{	
 	width: 960px;
@@ -74,9 +106,9 @@ a:hover #buttonStatistiques {
 }
 
 .wimb{font-family:'proximanovaSemiBold'; font-size: 11px; text-transform:uppercase;margin-top: 6px;
-margin-left: 14px;}
+margin-left: 14px;color:black;}
 .stat{font-family:'proximanovaSemiBold'; font-size: 11px; text-transform:uppercase;margin-top: 6px;
-margin-left: 14px;}
+margin-left: 14px;color:black;}
 
 #buttonStatistiques{float: left;
 width: 180px;
@@ -108,6 +140,7 @@ margin-left: 20px;
 	font-family: 'proximanovaLight';
 	font-size: 36px;
 	margin-left: 40px;
+	position: relative;
 }
 .sousTexteSecondPart{
 	font-family: 'proximanovaLight';
@@ -177,13 +210,9 @@ margin-left: 20px;
 	background-image: -ms-linear-gradient(bottom, #3A3A3A 50%, #444444 100%);*/
 	padding-top: 12px;
 	border-bottom:3px solid #34a4bc;
-
+	z-index: 100;
 }
 
-/**
- * You can use these classes to hide parts
- * of the countdown that you don't need.
- */
 .countDays{ /* display:none !important;*/ }
 .countDiv0{ /* display:none !important;*/ }
 .countHours{margin-left:50px;}
@@ -364,6 +393,9 @@ margin-left: 20px;
 .look{
 	display: block;
 }
+#courttennis{
+	margin-left: 92px;
+}
 
 #containerFourPart{
 	height: 736px;
@@ -392,7 +424,7 @@ margin-left: 20px;
 	border-radius: 6px;
 }
 #inputText{
-	margin-top:5px;
+	margin-top:7px;
 	margin-left: 5px;
 	font-family: 'proximanovaRegular';
 	font-size: 15px;
@@ -419,25 +451,25 @@ margin-left: 20px;
 ::-webkit-input-placeholder {
    color: #858585;
    	font-family: 'proximanovaRegular';
-	font-size: 15px;
+	font-size: 12px;
 }
 
 :-moz-placeholder { /* Firefox 18- */
    color: #858585;
    	font-family: 'proximanovaRegular';
-	font-size: 15px;
+	font-size: 12px;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
    color: #858585;
    	font-family: 'proximanovaRegular';
-	font-size: 15px;
+	font-size: 12px;
 }
 
 :-ms-input-placeholder {  
    color: #858585;
    	font-family: 'proximanovaRegular';
-	font-size: 15px;
+	font-size: 12px;
 }
 
 #imgFourPart{
@@ -465,6 +497,33 @@ margin-left: 20px;
 	font-size: 12px;	
 	padding-top: 5px;
 	color:black;
+}
+
+#lueur1 {
+height: 84px;
+width: 90px;
+margin-top: -93px;
+margin-left: 75px;
+box-shadow: 0px 2px 20px black;
+position: absolute;
+}
+
+#lueur2 {
+height: 86px;
+width: 86px;
+margin-top: -95px;
+margin-left: 207px;
+box-shadow: 0px 2px 20px black;
+position: absolute;
+}
+
+#lueur3 {
+height: 87px;
+width: 82px;
+margin-top: -94px;
+margin-left: 336px;
+box-shadow: 2px 2px 20px black;
+position: absolute;
 }
 @font-face { font-family: 'proximanovaLight'; src: url('../font/proximanova/proximanova-light-webfont.eot'); src: url('../font/proximanova/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), url('../font/proximanova/proximanova-light-webfont.woff') format('woff'), url('../font/proximanova/proximanova-light-webfont.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'proximanovaSemiBold'; src: url('../font/proximanova/proximanova-semibold-webfont.eot'); src: url('../font/proximanova/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../font/proximanova/proximanova-semibold-webfont.woff') format('woff'), url('../font/proximanova/proximanova-semibold-webfont.ttf') format('truetype'); font-weight: normal; font-style: normal; }
