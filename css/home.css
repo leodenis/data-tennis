@@ -15,18 +15,25 @@ header{
 	font-family: 'proximanovaLight';
 	text-align: center;
 }
-
+.topTitle{
+	color:white;
+	font-size: 49px;
+	margin:0;
+}
 .titleLeft{
 	color:white;
 	font-size: 49px;
+	margin: 0;
+	margin-top:-11px;
 }
 .titleRight{
-	margin-left: 20px;
+	margin-left: 36px;
 }
 .imgballetennis{
 	position: absolute;
-margin-left: -111px;	top: 90px;
-	width: 33px;
+	margin-left: 42px;
+	top: 147px;
+	width: 22px;
 -webkit-animation:animated_img 2s;
 
 }
@@ -73,7 +80,7 @@ margin-left: -111px;	top: 90px;
 .sousTexte{
 	font-family: 'proximanovaSemiBold';
 	font-size: 18px;
-	margin-left: 85px;
+	margin-left: 90px;
 	color:white;
 }
 
@@ -105,10 +112,10 @@ a:hover #buttonStatistiques {
 	border-bottom:3px solid #34a4bc;
 }
 
-.wimb{font-family:'proximanovaSemiBold'; font-size: 11px; text-transform:uppercase;margin-top: 6px;
-margin-left: 14px;color:black;}
-.stat{font-family:'proximanovaSemiBold'; font-size: 11px; text-transform:uppercase;margin-top: 6px;
-margin-left: 14px;color:black;}
+.wimb{font-family:'proximanovaSemiBold'; font-size: 11px; text-transform:uppercase;margin-top: 5px;
+margin-left: 25px;color:black;}
+.stat{font-family:'proximanovaSemiBold'; font-size: 11px; text-transform:uppercase;margin-top: 5px;
+margin-left: 46px;color:black;}
 
 #buttonStatistiques{float: left;
 width: 180px;
@@ -398,7 +405,7 @@ margin-left: 20px;
 }
 
 #containerFourPart{
-	height: 736px;
+	height: 515px;
 	width: 100%;
 	background:#242427;
 }
@@ -524,6 +531,36 @@ margin-top: -94px;
 margin-left: 336px;
 box-shadow: 2px 2px 20px black;
 position: absolute;
+}
+
+footer{
+	width: 100%;
+	height: 70px;
+	background: white;
+}	
+#containerFooter{
+	width: 100%;
+	margin:0 auto;
+	font-family:'proximanovaSemiBold'; 
+
+}
+.copyright{
+	margin:0 auto;
+	text-align: center;
+	padding-top: 21px;
+	font-size: 14px;
+	color: #9d9d9d;
+}
+.teamName{
+	margin:0 auto;
+	text-align: center;
+	font-size: 12px;
+	color: #9d9d9d;
+	margin-top: 2px;
+}
+.linkName{
+	text-decoration:none;
+	color: #9d9d9d;
 }
 @font-face { font-family: 'proximanovaLight'; src: url('../font/proximanova/proximanova-light-webfont.eot'); src: url('../font/proximanova/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), url('../font/proximanova/proximanova-light-webfont.woff') format('woff'), url('../font/proximanova/proximanova-light-webfont.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'proximanovaSemiBold'; src: url('../font/proximanova/proximanova-semibold-webfont.eot'); src: url('../font/proximanova/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../font/proximanova/proximanova-semibold-webfont.woff') format('woff'), url('../font/proximanova/proximanova-semibold-webfont.ttf') format('truetype'); font-weight: normal; font-style: normal; }
