@@ -11,23 +11,18 @@ $(document).ready( function(){
             console.log('Error on data req occure');
         }
     });
-    var url = window.location.toString().replace(/\?([a-z]+)/,"");;
+    var url = window.location.toString().replace(/#\/([a-z]+)/,"");
 
     // console.log(json)
 
     function scrollbar(scrollbarContainer, elScrollable){  
         $(scrollbarContainer).css({'min-width':' 10px','position':'relative','float':'right','width': '10px','height':'100%','background-color':'none','background-color':' "#151515'});
-        $(scrollbarContainer + '>div').css({'width':'10px','height': '100px','background-color':'#1e1e21'})
-        // console.log($(scrollbarContainer).height())
-        // console.log($(elScrollable).parent().height())
-        // console.log((($(elScrollable).parent().height() * 100 )/ $(elScrollable).height()) /100 * $(elScrollable).parent().height())
+        $(scrollbarContainer + '>div').css({'width':'10px','height': '100px','background-color':'#1e1e21'});
         var scrollNav = 0;
         var i = 0;
         $(scrollbarContainer + '>div').css({'height':(($(elScrollable).parent().height() * 100 )/ $(elScrollable).height()) /100 * $(elScrollable).parent().height()});
         var scrollBar = Math.ceil($(elScrollable).height() / $(elScrollable).children().height() - $(elScrollable).parent().height() / 52);
-        console.log($(elScrollable).height() / $(elScrollable).children().height() - $(elScrollable).parent().height() / 52)
         scrollBar = ((($(elScrollable).parent().height() * 100 )/ $(elScrollable).height()) /100 * $(elScrollable).parent().height() / scrollBar);
-        console.log(scrollBar)
         $(elScrollable).bind('mousewheel', function(event) {
             var delta = event.originalEvent.wheelDelta;
             if(delta < 0 ){
@@ -37,8 +32,6 @@ $(document).ready( function(){
                     $(elScrollable).animate({'margin-top':scrollNav},100);
                     $(scrollbarContainer + '>div').animate({'top':(scrollBar * i)},100);
                 }else{
-                    // $(elScrollable).animate({'margin-top':(-$(elScrollable).height() + $(scrollbarContainer).height())},100);
-                    // $(scrollbarContainer + '>div').animate({'top':($(scrollbarContainer).height() - $(scrollbarContainer + '>div').height())},100);
                 }
             }else if(delta > 0 ){
                 if (scrollNav < 0) {
@@ -100,9 +93,6 @@ $(document).ready( function(){
     function statsRound(statsRounded){
         $(statsRounded).append('<canvas> </canvas>');
         var canvas = document.querySelector(statsRounded + '>canvas');
-        console.log('-------------------------------------------------------------------')
-        console.log($(statsRounded).siblings('img').width())
-        console.log($(statsRounded).width())
         canvas.width = $(statsRounded).width()-12-$(statsRounded).siblings('img').width();
         canvas.height = $(statsRounded).width()-12-$(statsRounded).siblings('img').width();
         var ctx = canvas.getContext('2d');
@@ -126,15 +116,37 @@ $(document).ready( function(){
     function navBar(){
         var nav = $('#container>nav>ul');
         for (k in json) {
-            nav.append('<li id="' + json[k].nom.toLowerCase() + '"><img src="img/player/thumbnails/'+ json[k].nom.toLowerCase() +'.jpg"><p>'+ json[k].nom.toUpperCase() +' '+ json[k].prenom +'</p><p>rank : '+ k +'</p></li>');
-            that = $('#container>nav>ul>li#' + json[k].nom.toLowerCase());
+            nav.append('<li class="' + json[k].nom.toLowerCase() + '"><img src="img/player/thumbnails/'+ json[k].nom.toLowerCase() +'.jpg"><p>'+ json[k].nom.toUpperCase() +' '+ json[k].prenom +'</p><p>rank : '+ k +'</p></li>');
+            that = $('#container>nav>ul>li.' + json[k].nom.toLowerCase());
             that.click(function(){
                 $('#container>nav>ul>li').removeClass('click')
-                this.className = 'click';
-                console.log($(this))
-                window.location = url + '?' + $(this)[0].id;
+                $(this).attr('click','on');
+                window.location = url + '#/' + $(this)[0].className;
             })
         }
+    }
+    function selectBar(selector){
+        var marge = 0;
+        $(selector + '>div.leftSelect').click(function(){
+            console.log('test')
+            if(marge > marge * 5){
+                marge -= 70;
+                $(selector + '>ul').animate({'margin-left':marge});     
+            }
+        });
+        $(selector + '>div.rightSelect').click(function(){
+            console.log('test')
+            if(marge <= 0){
+                marge += 70;
+                $(selector + '>ul').animate({'margin-left':marge});
+            }
+        });
+    }
+    function Maptitres(selector){
+        $(selector).css({'height':'-webkit-calc(100% - 80px )','width':'-webkit-calc(100% - 10px )'});
+        var latlng = new google.maps.LatLng(40, 0);
+        var settings = {zoom: 1,center: latlng,mapTypeId: google.maps.MapTypeId.ROADMAP};
+        return new google.maps.Map($(selector)[0], settings);
     }
 
 
@@ -163,6 +175,12 @@ $(document).ready( function(){
     statsRound('#resumeCarriere .statsRounded.dur');
     statsRound('#resumeCarriere .statsRounded.clay');
     statsRound('#resumeCarriere .statsRounded.grass');
+
+    selectBar('#titres>div>nav');
+    Maptitres('#titres>div>div>div#mapTitre');
+    statsRound('#titres .statsRounded.dur');
+    statsRound('#titres .statsRounded.clay');
+    statsRound('#titres .statsRounded.grass');
 
     scrollbar('#container>nav>div.scrollbar','#container>nav>ul');
     scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');

@@ -53,6 +53,7 @@ section>div>div>h3{font-size:25px;font-weight:bold;margin:30px;}
 #resume2013>div:first-child>div>div:last-child{border-top:1px solid #242424;}
 #resume2013>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 12px);float:left;border-left:1px solid #242424;}
 /*Resume Carriere*/
+#resumeCarriere{overflow:hidden;}
 #resumeCarriere>div{width: -webkit-calc(100% - 12px);float:left;}
 #resumeCarriere>div>div:first-child{width: -webkit-calc(100% / 5 * 2 );float:left;height:300px;border-bottom:1px solid #0a0a0a;border-right:1px solid #0a0a0a;}
 #resumeCarriere>div>div:nth-child(2){border-bottom:1px solid #0a0a0a;border-left:1px solid #242424;width: -webkit-calc(100% / 5 * 3 - 1px);height:270px;margin-left: -webkit-calc(100% / 5 * 2 + 1px);}
@@ -62,14 +63,16 @@ section>div>div>h3{font-size:25px;font-weight:bold;margin:30px;}
 #resumeCarriere>div>div:nth-child(3){border-right:1px solid #0a0a0a;border-top:1px solid #242424;width: -webkit-calc(100% / 5 * 3 );float:left;}
 #resumeCarriere>div>div:nth-child(4){border-left:1px solid #242424;border-top:1px solid #242424;width: -webkit-calc(100% / 5 * 2 );margin-left: -webkit-calc(100% / 5 * 3 + 1px );}
 /*Titres*/
-section nav{width:200px;margin:auto;overflow: hidden;}
-section nav>ul{width:600px;}
-section nav>ul>li{float:left;width:100px;color:#fff;text-align:center;}
-/*section nav>ul>li:after{content:'.';color:transparent;background-image:url(../img/deg.jpg);width:34px;height:24px;}
-section nav>ul>li:before{content:'.';color:transparent;background-image:url(../img/deg.jpg);width:34px;height:24px;}*/
-#titres>div:first-child{width: -webkit-calc(100% / 5 * 3 );float:left;}
-#titres>div:nth-child(2){width: -webkit-calc(100% / 5 * 3 );float:left;}
-#titres>div:nth-child(3){width: -webkit-calc(100% / 5 * 2 );float:left;}
+section nav{width:200px;height:20px;margin:auto;overflow: hidden;margin:20px auto; }
+section nav>ul{z-index:1;}
+section nav>ul>li{float:left;width:70px;color:#fff;text-align:center;}
+section nav>ul>li:first-child{margin-left:60px;}
+#titres>div:first-child{float:left;width: -webkit-calc(100% / 5 * 3 );}
+#titres>div:first-child>div:first-child{width: -webkit-calc(100% - 1px);float:left;height: -webkit-calc(100% - 60px);border-bottom:1px solid #0a0a0a;border-right:1px solid #0a0a0a;}
+#titres>div:first-child>div:nth-child(2){width: -webkit-calc(100% - 20px);float:left;padding: 10px;border-top:1px solid #242424;border-right:1px solid #0a0a0a; }
+#titres>div:first-child>div:nth-child(2)>h3{margin: 10px 0px;text-align:center;width:100%;}
+#titres>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 1px);float:left;border-left:1px solid #242424;}
+#titres div>h3{clear:both;float:none;}
 
 #resume2013 div.statsBarContainer:first-of-type{margin-top:90px;}
 #resume2013 div.surface:nth-child(2){clear:both;}
@@ -81,6 +84,9 @@ div.surface:nth-child(3)>img{float:right;}
 div.surface>img{width:282px;float:left;}
 div.surface>div:first-of-type{margin-top:117px;margin-left:160px;background-image:url(../img/pointer.png);position:absolute;width:147px;height:31px;}
 div.surface>div.left{margin-top: 160px;margin-left:160px;background-image:url(../img/pointer.png);position:absolute;width:147px;height:31px;-moz-transform: scaleX(-1);-o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter: "FlipH";clear:both;}
+div.leftSelect{color:#fff;position:absolute;}
+div.rightSelect{color:#fff;position:absolute;margin-left:190px;}
 
-#resume2013{display: none;}
-#resumeCarriere{display: none;}
+#resume2013{display: none;z-index: 10;}
+#resumeCarriere{display: none;z-index: 10;}
+/*#titres{display: none;z-index: 10;}*/
