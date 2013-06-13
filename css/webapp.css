@@ -28,14 +28,14 @@ p{font-size:15px;}
 #container>article>header>div>div:last-child{margin-left:20px;border-left:1px solid #2a2a2c;padding-left:20px;}
 #container>article>header>div>div>p{margin-bottom: 10px;}
 #container>article>header>div>div>p>span{font-family:'proximanova';font-weight:bold;}
-#container>article>header>div:last-child{padding-top:30px;margin-left:-webkit-calc(100% - 900px);;width:300px;height:190px;}
+#container>article>header>div:last-child{float:right;padding-top:30px;margin-right:50px;width:300px;height:190px;}
 #container>article>header>div:last-child>div:first-child{width:100%;background-color:#1e1e21;padding-left:20px;height:75%;border: 1px solid #000;-moz-box-shadow: inset 0 0 2px #000000;-webkit-box-shadow: inset 0 0 2px #000000;box-shadow: inset 0 0 2px #000000; }
 #container>article>header>div:last-child>div:first-child>h2{font-size:25px;margin-top: 15px;text-align: center;}
 #container>article>header>div:last-child>div:first-child>h3{font-size:95px;font-family: 'proximanova';font-weight: bolder;text-align: center;}
 #container>article>header>div:last-child>div:last-child{background-color: #1a1a1c;border-left:4px solid #159db2;margin-left: 0px;padding-left: 20px;padding-top: 12px;border-bottom:1px solid #232326;width: -webkit-calc(100% - 4px);height: 28px;}
 /*nav player*/
 #container>article>nav{border-top: 1px solid #545454;width: 100%;height:38px;background-image:url(../img/menuBt.jpg);box-shadow:0px 0px 4px 2px rgba(0, 0, 0, 1)}
-#container>article>nav>ul{color:#fff;}
+#container>article>nav>ul{color:#fff;position:absolute;}
 #container>article>nav>ul>li{padding: 0px 20px ;padding-top: 0px;margin-top: 10px;border-left: 1px solid #414141;border-right: 1px solid #030303;float: left;}
 #container>article>nav>ul>li:hover{background-image:url(../img/menuBtHover.jpg);background-color: #151517;border:none;border-bottom:4px solid #159db2;margin-top: -1px;padding-top:11px; padding-right:21px; padding-left:21px; height:24px;}
 #container>article>nav>ul>li.active{background-image:url(../img/menuBtHover.jpg);background-color: #151517;border:none;border-bottom:4px solid #159db2;margin-top: -1px;padding-top:11px; padding-right:21px; padding-left:21px; height:24px;}
@@ -78,13 +78,24 @@ section nav>ul>li:first-child{margin-left:60px;}
 #titres>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 11px);float:left;border-left:1px solid #242424;}
 #titres div>h3{clear:both;float:none;}
 
+
 #finales{overflow:hidden;}
+#finales>div:first-child{float:left;width: -webkit-calc(100% / 5 * 3 );background-color: #171719;}
+#finales>div:first-child>div:first-child{width: -webkit-calc(100% - 1px);float:left;height: -webkit-calc(100% - 60px);border-bottom:1px solid #0a0a0a;border-right:1px solid #0a0a0a;}
+#finales>div:first-child>div:nth-child(2){width: -webkit-calc(100% - 20px);float:left;padding: 10px;border-top:1px solid #242424;border-right:1px solid #0a0a0a; }
+#finales>div:first-child>div:nth-child(2)>h3{margin: 10px 0px;text-align:center;width:100%;}
+#finales>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 11px);float:left;border-left:1px solid #242424;}
+#finales div>h3{clear:both;float:none;}
+#finales nav>ul>li{color:transparent;}
+#finales div.rightSelect,#finales div.leftSelect{color:transparent;}
+
+/*#finales{overflow:hidden;}
 #finales>div:first-child{float:left;width: -webkit-calc(100% / 5 * 3 );height: -webkit-calc(100% - 60px );background-color: #171719;}
 #finales>div:first-child>div:first-child{width: -webkit-calc(100% - 1px);float:left;height: -webkit-calc(100% - 30px);border-bottom:1px solid #0a0a0a;border-right:1px solid #0a0a0a;margin-top: 30px;}
 #finales>div:first-child>div:nth-child(2){width: -webkit-calc(100% - 20px);float:left;padding: 10px;border-top:1px solid #242424;border-right:1px solid #0a0a0a; }
 #finales>div:first-child>div:nth-child(2)>h3{margin: 10px 0px;text-align:center;width:100%;}
 #finales>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 11px);float:left;border-left:1px solid #242424;}
-#finales div>h3{clear:both;float:none;}
+#finales div>h3{clear:both;float:none;}*/
 
 #statistique{overflow: hidden;}
 #statistique>div:first-child{width:100%;height:60px;background-image:url(../img/btHover.jpg);}

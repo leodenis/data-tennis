@@ -1,5 +1,6 @@
 $(document).ready( function(){
     var json ;
+    var data = {};
     $.ajax({
         url: 'javascript/data.json',
         async: false,
@@ -59,7 +60,8 @@ $(document).ready( function(){
         })
     }
     function statsBar(statsContainer){
-        $(statsContainer).append('<canvas> </canvas>')
+        $(statsContainer + '>canvas').remove();
+        $(statsContainer).append('<canvas> </canvas>');
         var canvas = document.querySelector(statsContainer + '>canvas');
         canvas.width = $(statsContainer).width();
         canvas.height = $(statsContainer).parent().height();
@@ -89,6 +91,7 @@ $(document).ready( function(){
         textWrite = true;
     }
     function statsRound(statsRounded,taille){
+        $(statsRounded + '>canvas').remove();
         $(statsRounded).append('<canvas> </canvas>');
         var canvas = document.querySelector(statsRounded + '>canvas');
         if(taille == true){
@@ -185,12 +188,13 @@ $(document).ready( function(){
     function navBar(){
         var nav = $('#container>nav>ul');
         for (k in json) {
-            nav.append('<li class="' + json[k].nom.toLowerCase() + '"><img src="img/player/thumbnails/'+ json[k].nom.toLowerCase() +'.jpg"><p>'+ json[k].nom.toUpperCase() +' '+ json[k].prenom +'</p><p>rank : '+ k +'</p></li>');
-            that = $('#container>nav>ul>li.' + json[k].nom.toLowerCase());
+            nav.append('<li class="' + json[k].nom.toLowerCase().replace(' ','') + '"><img src="img/player/thumbnails/'+ json[k].nom.toLowerCase() +'.jpg"><p>'+ json[k].nom.toUpperCase() +' '+ json[k].prenom +'</p><p>rank : '+ k +'</p></li>');
+            that = $('#container>nav>ul>li.' + json[k].nom.toLowerCase().replace(' ',''));
             that.click(function(){
                 $('#container>nav>ul>li').attr('click','off');
                 $(this).attr('click','on');
                 window.location = url + '#/' + $(this)[0].className;
+                changeData($('article>nav>ul>li.active').hasClass());
             })
         }
         $('article>nav>ul>li').click(function(){
@@ -200,81 +204,100 @@ $(document).ready( function(){
             $('section').css({'display':'none'});
             $('#' + claSS).css({'display':'block'});
             $(this).addClass('active');
-            if(claSS == 'resume2013'){
-                statsBar('#resume2013 .statsBar.tous');
-                statsBar('#resume2013 .statsBar.grdchelem');
-                statsBar('#resume2013 .statsBar.masters1000');
-                statsBar('#resume2013 .statsBar.tieBreaks');
-                statsBar('#resume2013 .statsBar.vsTop10');
-                statsBar('#resume2013 .statsBar.dernierSet');
-                statsBar('#resume2013 .statsBar.afterWin1Set');
-                statsBar('#resume2013 .statsBar.afterLost1Set');
-                statsBar('#resume2013 .statsBar.vsDroitier');
-                statsRound('#resume2013 .statsRounded.dur');
-                statsRound('#resume2013 .statsRounded.clay');
-                statsRound('#resume2013 .statsRounded.grass'); 
-                scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
-            }else if(claSS == 'resumeCarriere'){
-                statsBar('#resumeCarriere .statsBar.tous');
-                statsBar('#resumeCarriere .statsBar.grdchelem');
-                statsBar('#resumeCarriere .statsBar.masters1000');
-                statsBar('#resumeCarriere .statsBar.tieBreaks');
-                statsBar('#resumeCarriere .statsBar.vsTop10');
-                statsBar('#resumeCarriere .statsBar.dernierSet');
-                statsBar('#resumeCarriere .statsBar.afterWin1Set');
-                statsBar('#resumeCarriere .statsBar.afterLost1Set');
-                statsBar('#resumeCarriere .statsBar.vsDroitier');
-                statsRound('#resumeCarriere .statsRounded.dur');
-                statsRound('#resumeCarriere .statsRounded.clay');
-                statsRound('#resumeCarriere .statsRounded.grass'); 
-                scrollbar('#resumeCarriere>div.scrollbar','#resumeCarriere>div:first-child');
-            }else if(claSS == 'titres'){
-                selectBar('#titres>div>div>nav:first-child');
-                Maptitres('#titres>div>div>div#mapTitre');
-                statsRound('#titres .statsRounded.dur');
-                statsRound('#titres .statsRounded.clay');
-                statsRound('#titres .statsRounded.grass');
-                scrollbar('#titres>div.scrollbar','#titres>div:nth-child(2)');
-            }else if(claSS == "finales"){
-                Maptitres('#finales>div>div>div#mapTitre');
-                statsRound('#finales .statsRounded.dur');
-                statsRound('#finales .statsRounded.clay');
-                statsRound('#finales .statsRounded.grass');
-            }else if(claSS == "statistique"){
-                selectBar('#statistique>div>nav:first-child');
-                selectBar('#statistique>div>nav:nth-child(2)');
-                selectBar('#statistique>div>nav:nth-child(3)');
-                statsRound('#statistique .statsRounded.pgsr1s',true);
-                statsRound('#statistique .statsRounded.pgsr2s',true);
-                statsRound('#statistique .statsRounded.obdb',true);
-                statsRound('#statistique .statsRounded.prg',true);
-                statsRound('#statistique .statsRounded.tpgr',true); 
-                scrollbar('#statistique>div.scrollbar','#statistique>div:nth-child(2)');
-            }
+            changeData(claSS);
         })
-        statsBar('#resume2013 .statsBar.tous');
-        statsBar('#resume2013 .statsBar.grdchelem');
-        statsBar('#resume2013 .statsBar.masters1000');
-        statsBar('#resume2013 .statsBar.tieBreaks');
-        statsBar('#resume2013 .statsBar.vsTop10');
-        statsBar('#resume2013 .statsBar.dernierSet');
-        statsBar('#resume2013 .statsBar.afterWin1Set');
-        statsBar('#resume2013 .statsBar.afterLost1Set');
-        statsBar('#resume2013 .statsBar.vsDroitier');
-        statsRound('#resume2013 .statsRounded.dur');
-        statsRound('#resume2013 .statsRounded.clay');
-        statsRound('#resume2013 .statsRounded.grass'); 
-        scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
+        // statsBar('#resume2013 .statsBar.tous');
+        // statsBar('#resume2013 .statsBar.grdchelem');
+        // statsBar('#resume2013 .statsBar.masters1000');
+        // statsBar('#resume2013 .statsBar.tieBreaks');
+        // statsBar('#resume2013 .statsBar.vsTop10');
+        // statsBar('#resume2013 .statsBar.dernierSet');
+        // statsBar('#resume2013 .statsBar.afterWin1Set');
+        // statsBar('#resume2013 .statsBar.afterLost1Set');
+        // statsBar('#resume2013 .statsBar.vsDroitier');
+        // statsRound('#resume2013 .statsRounded.dur');
+        // statsRound('#resume2013 .statsRounded.clay');
+        // statsRound('#resume2013 .statsRounded.grass'); 
+        // scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
     }
 
+    function changeData(onglet){
+        var urlHere = window.location.toString().match(/#\/([a-z]+)/);
+        urlHere = urlHere[1];
+        for(l in json){
+            if(json[l].nom.toLowerCase().replace(' ','') == urlHere){
+                data = json[l];
+                parseData(onglet,data);
+            }
+        }
+    }
 
+    function parseData(onglet,data){
+        console.log(onglet)
+        console.log(data)
+        $('#container>article>header>img').attr('src','img/player/thumbnails/big/'+ data.nom.toUpperCase().replace(' ','') + '.png')
+        $('#container>article>header>div>h1').html( data.nom + ' ' + data.prenom);
+        if(onglet == 'resume2013'){
+            console.log( $('#resume2013 div.statsBarContainer>div.statsBar.tous'))
+            $('#resume2013 div.statsBarContainer>div.statsBar.tous').attr('data-gagner',data.nbMatchGagner[2013].tous.gagner);
 
+            statsBar('#resume2013 div.statsBarContainer>div.statsBar.tous');
+            statsBar('#resume2013 .statsBar.grdchelem');
+            statsBar('#resume2013 .statsBar.masters1000');
+            statsBar('#resume2013 .statsBar.tieBreaks');
+            statsBar('#resume2013 .statsBar.vsTop10');
+            statsBar('#resume2013 .statsBar.dernierSet');
+            statsBar('#resume2013 .statsBar.afterWin1Set');
+            statsBar('#resume2013 .statsBar.afterLost1Set');
+            statsBar('#resume2013 .statsBar.vsDroitier');
+            statsRound('#resume2013 .statsRounded.dur');
+            statsRound('#resume2013 .statsRounded.clay');
+            statsRound('#resume2013 .statsRounded.grass'); 
+            scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
+        }else if(onglet == 'resumeCarriere'){
 
+            statsBar('#resumeCarriere .statsBar.tous');
+            statsBar('#resumeCarriere .statsBar.grdchelem');
+            statsBar('#resumeCarriere .statsBar.masters1000');
+            statsBar('#resumeCarriere .statsBar.tieBreaks');
+            statsBar('#resumeCarriere .statsBar.vsTop10');
+            statsBar('#resumeCarriere .statsBar.dernierSet');
+            statsBar('#resumeCarriere .statsBar.afterWin1Set');
+            statsBar('#resumeCarriere .statsBar.afterLost1Set');
+            statsBar('#resumeCarriere .statsBar.vsDroitier');
+            statsRound('#resumeCarriere .statsRounded.dur');
+            statsRound('#resumeCarriere .statsRounded.clay');
+            statsRound('#resumeCarriere .statsRounded.grass'); 
+            scrollbar('#resumeCarriere>div.scrollbar','#resumeCarriere>div:first-child');
+        }else if(onglet == 'titres'){
 
+            selectBar('#titres>div>div>nav:first-child');
+            Maptitres('#titres>div>div>div#mapTitre');
+            statsRound('#titres .statsRounded.dur');
+            statsRound('#titres .statsRounded.clay');
+            statsRound('#titres .statsRounded.grass');
+            scrollbar('#titres>div.scrollbar','#titres>div:nth-child(2)');
+        }else if(onglet == "finales"){
 
+            Maptitres('#finales>div>div>div#mapTitre');
+            statsRound('#finales .statsRounded.dur');
+            statsRound('#finales .statsRounded.clay');
+            statsRound('#finales .statsRounded.grass');
+        }else if(onglet == "statistique"){
 
-
+            selectBar('#statistique>div>nav:first-child');
+            selectBar('#statistique>div>nav:nth-child(2)');
+            selectBar('#statistique>div>nav:nth-child(3)');
+            statsRound('#statistique .statsRounded.pgsr1s',true);
+            statsRound('#statistique .statsRounded.pgsr2s',true);
+            statsRound('#statistique .statsRounded.obdb',true);
+            statsRound('#statistique .statsRounded.prg',true);
+            statsRound('#statistique .statsRounded.tpgr',true); 
+            scrollbar('#statistique>div.scrollbar','#statistique>div:nth-child(2)');
+        }
+    }
     scrollbar('#container>nav>div.scrollbar','#container>nav>ul');
 
     navBar();
+    changeData('resume2013')
 });
