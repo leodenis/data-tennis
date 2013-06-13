@@ -100,8 +100,11 @@ $(document).ready( function(){
     function statsRound(statsRounded){
         $(statsRounded).append('<canvas> </canvas>');
         var canvas = document.querySelector(statsRounded + '>canvas');
-        canvas.width = $(statsRounded).width()-$(statsRounded).siblings('img').width();
-        canvas.height = $(statsRounded).width()-$(statsRounded).siblings('img').width();
+        console.log('-------------------------------------------------------------------')
+        console.log($(statsRounded).siblings('img').width())
+        console.log($(statsRounded).width())
+        canvas.width = $(statsRounded).width()-12-$(statsRounded).siblings('img').width();
+        canvas.height = $(statsRounded).width()-12-$(statsRounded).siblings('img').width();
         var ctx = canvas.getContext('2d');
         ctx.beginPath();
         ctx.arc(canvas.width/2, canvas.width/2, canvas.width/3, 0, Math.PI*2, true); 
@@ -163,7 +166,7 @@ $(document).ready( function(){
 
     scrollbar('#container>nav>div.scrollbar','#container>nav>ul');
     scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
-    scrollbar('#resumeCarriere>div.scrollbar','#resumeCarriere>div');
+    scrollbar('#resumeCarriere>div.scrollbar','#resumeCarriere>div:first-child');
 
-    // navBar();
+    navBar();
 });
