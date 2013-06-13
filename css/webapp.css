@@ -1,7 +1,8 @@
-/*GLOBAL*/
+GLOBAL*/
 @font-face { font-family: 'proximanova'; src: url('../font/proximanova/proximanova-light-webfont.eot'); src: url('../font/proximanova/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), url('../font/proximanova/proximanova-light-webfont.woff') format('woff'), url('../font/proximanova/proximanova-light-webfont.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'proximanova'; src: url('../font/proximanova/proximanova-semibold-webfont.eot'); src: url('../font/proximanova/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../font/proximanova/proximanova-semibold-webfont.woff') format('woff'), url('../font/proximanova/proximanova-semibold-webfont.ttf') format('truetype'); font-weight: bold; font-style: normal; }
 @font-face { font-family: 'proximanova'; src: url('../font/proximanova/ProximaNova-Bold.otf'); font-weight: bolder; font-style: normal; }
+html{min-width:1280px;width:100%;height:100%;overflow:hidden;}
 body{background-color:#000;min-width:1280px;width:100%;height:100%;overflow:hidden;}
 p,h1,h2,h3,h4,h5,h6,a{color:#fff;font-family:'proximanova';text-decoration:none;}
 p{font-size:15px;}
@@ -38,26 +39,37 @@ p{font-size:15px;}
 #container>article>nav>ul>li{padding: 0px 20px ;padding-top: 0px;margin-top: 10px;border-left: 1px solid #414141;border-right: 1px solid #030303;float: left;}
 #container>article>nav>ul>li:hover{background-image:url(../img/menuBtHover.jpg);background-color: #151517;border:none;border-bottom:4px solid #159db2;margin-top: -1px;padding-top:11px; padding-right:21px; padding-left:21px; height:24px;}
 #container>article>nav>ul>li.active{background-image:url(../img/menuBtHover.jpg);background-color: #151517;border:none;border-bottom:4px solid #159db2;margin-top: -1px;padding-top:11px; padding-right:21px; padding-left:21px; height:24px;}
-/*resulme 2013*/
-#resume2013{width: 100%;height: -webkit-calc(100% - 285px);overflow:hidden;background-image:url(../img/btHover.jpg);float:left;}
-/*#resume2013>div{width: -webkit-calc(100%);}*/
+/*Seciton global*/
+section{width: 100%;height: -webkit-calc(100% - 285px);background-image:url(../img/btHover.jpg)}
+section>div>h3,section>div>div>h3{font-size:25px;font-weight:bold;margin:30px;float: left;}
+/*resume 2013*/
+#resume2013{width: 100%;height: -webkit-calc(100% - 285px);overflow:hidden;background-image:url(../img/btHover.jpg);float:left;display: none;}
 #resume2013>div:first-child{width: -webkit-calc(100% / 5 * 3 );float:left;border-right:1px solid #0a0a0a;}
 #resume2013>div>h3{font-size:25px;font-weight:bold;margin:30px;float: left;}
 #resume2013>div:first-child>p{font-size:15px;width:-webkit-calc(100% / 2 - 200px);float:left;margin:30px 0px;}
 #resume2013>div:first-child>p:first-of-type{margin-left:130px;}
 #resume2013>div:first-child>div>div:first-child{border-bottom:1px solid #0a0a0a;}
 #resume2013>div:first-child>div>div:last-child{border-top:1px solid #242424;}
-
 #resume2013>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 12px);float:left;border-left:1px solid #242424;}
-#resume2013>div:nth-child(2)>div:nth-child(2){clear:both;}
-#resume2013>div:nth-child(2)>div:nth-child(3)>img{float:right;}
-#resume2013>div:nth-child(2)>div>img{width:282px;float:left;}
-#resume2013>div:nth-child(2)>div>div:first-of-type{margin-top:117px;margin-left:160px;background-image:url(../img/pointer.png);position:absolute;width:147px;height:31px;}
-#resume2013>div:nth-child(2)>div>div.left{margin-top: 160px;margin-left:160px;background-image:url(../img/pointer.png);position:absolute;width:147px;height:31px;-moz-transform: scaleX(-1);-o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter: "FlipH";clear:both;}
+/*Resume Carriere*/
+#resumeCarriere>div{width: -webkit-calc(100% - 12px );float:left;}
+#resumeCarriere>div>div:first-child{width: -webkit-calc(100% / 5 * 2 );float:left;height:300px;}
+#resumeCarriere>div>div:nth-child(2){width: -webkit-calc(100% / 5 * 3 );height:300px;margin-left: -webkit-calc(100% / 5 * 2 );}
+#resumeCarriere>div>div:nth-child(2)>p{font-size: 15px;width: -webkit-calc(100% - 12px }
+#resumeCarriere>div>div:nth-child(2)>p:first-of-type{margin-left: 130px;float: left;margin: 30px 0px;text-align: right;}
+#resumeCarriere>div>div:nth-child(2)>p:last-of-type{padding: 30px 0px;margin-left: -webkit-calc(100% / 2 + 30px); }
+#resumeCarriere>div>div:nth-child(3){width: -webkit-calc(100% / 5 * 3 );float:left;}
+#resumeCarriere>div>div:nth-child(4){width: -webkit-calc(100%  - 12px );margin-left: -webkit-calc(100% / 5 * 3 );}
 
+#resume2013 div.statsBarContainer:first-of-type{margin-top:90px;}
+div.statsBarContainer:first-of-type{margin-top:14px;}
+div.statsBarContainer{margin-left:30px;width: 100%;height: 60px;}
+div.statsBarContainer>p{font-size:20px;float:left;}
+div.statsBarContainer>div.statsBar{margin-left:250px;width:-webkit-calc(100% - 280px);height: 40px;}
+div.surface:nth-child(2){clear:both;}
+div.surface:nth-child(3)>img{float:right;}
+div.surface>img{width:282px;float:left;}
+div.surface>div:first-of-type{margin-top:117px;margin-left:160px;background-image:url(../img/pointer.png);position:absolute;width:147px;height:31px;}
+div.surface>div.left{margin-top: 160px;margin-left:160px;background-image:url(../img/pointer.png);position:absolute;width:147px;height:31px;-moz-transform: scaleX(-1);-o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter: "FlipH";clear:both;}
 
-/********************STATS BAR********************************/
-div.statsBarConatiner:first-of-type{margin-top:90px}
-div.statsBarConatiner{margin-left:30px;width: 100%;height: 60px;}
-div.statsBarConatiner>p{font-size:20px;float:left;}
-div.statsBarConatiner>div.statsBar{margin-left:250px;width:-webkit-calc(100% - 280px);height: 40px;}
+#resume2013{}

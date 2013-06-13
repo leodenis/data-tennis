@@ -3,27 +3,31 @@ $(document).ready( function(){
     $.ajax({
         url: 'javascript/data.json',
         async: false,
-        dataType: 'json',
+        dataType: 'text',
         success: function (response) {
-            console.log(response)
+            json = eval ("(" + response + ")");
         },
         error: function(res){
-            console.log(res)
-            console.log(JSON.parse(res.responseText))
-            // json = res.responseText;
+            console.log('Error on data req occure');
         }
     });
+    var url = window.location.toString().replace(/\?([a-z]+)/,"");;
 
     // console.log(json)
 
     function scrollbar(scrollbarContainer, elScrollable){  
         $(scrollbarContainer).css({'min-width':' 10px','position':'relative','float':'right','width': '10px','height':'100%','background-color':'none','background-color':' "#151515'});
         $(scrollbarContainer + '>div').css({'width':'10px','height': '100px','background-color':'#1e1e21'})
+        // console.log($(scrollbarContainer).height())
+        // console.log($(elScrollable).parent().height())
+        // console.log((($(elScrollable).parent().height() * 100 )/ $(elScrollable).height()) /100 * $(elScrollable).parent().height())
         var scrollNav = 0;
         var i = 0;
-        $(scrollbarContainer + '>div').css({'height':(($(elScrollable).parent().height() * 100 )/ $(elScrollable).height())});
-        var scrollBar = Math.ceil($(elScrollable).height() / $(elScrollable).children().height() - $(elScrollable).parent().height() / $('#container>nav>ul>li').height());
-        scrollBar = ($(scrollbarContainer).height() / scrollBar) - ($(scrollbarContainer+'>div').height() / scrollBar);
+        $(scrollbarContainer + '>div').css({'height':(($(elScrollable).parent().height() * 100 )/ $(elScrollable).height()) /100 * $(elScrollable).parent().height()});
+        var scrollBar = Math.ceil($(elScrollable).height() / $(elScrollable).children().height() - $(elScrollable).parent().height() / 52);
+        console.log($(elScrollable).height() / $(elScrollable).children().height() - $(elScrollable).parent().height() / 52)
+        scrollBar = ((($(elScrollable).parent().height() * 100 )/ $(elScrollable).height()) /100 * $(elScrollable).parent().height() / scrollBar);
+        console.log(scrollBar)
         $(elScrollable).bind('mousewheel', function(event) {
             var delta = event.originalEvent.wheelDelta;
             if(delta < 0 ){
@@ -33,8 +37,8 @@ $(document).ready( function(){
                     $(elScrollable).animate({'margin-top':scrollNav},100);
                     $(scrollbarContainer + '>div').animate({'top':(scrollBar * i)},100);
                 }else{
-                    $(elScrollable).animate({'margin-top':(-$(elScrollable).height() + $(scrollbarContainer).height())},100);
-                    $(scrollbarContainer + '>div').animate({'top':($(scrollbarContainer).height() - $(scrollbarContainer + '>div').height())},100);
+                    // $(elScrollable).animate({'margin-top':(-$(elScrollable).height() + $(scrollbarContainer).height())},100);
+                    // $(scrollbarContainer + '>div').animate({'top':($(scrollbarContainer).height() - $(scrollbarContainer + '>div').height())},100);
                 }
             }else if(delta > 0 ){
                 if (scrollNav < 0) {
@@ -63,7 +67,6 @@ $(document).ready( function(){
             }
         })
     }
-
     function statsBar(statsContainer){
         $(statsContainer).append('<canvas> </canvas>')
         var canvas = document.querySelector(statsContainer + '>canvas');
@@ -94,7 +97,6 @@ $(document).ready( function(){
         ctx.fillText($(statsContainer).data('perdu'),($(statsContainer).width()/3*2+1+($(statsContainer).data('perdu'))),45);
         textWrite = true;
     }
-
     function statsRound(statsRounded){
         $(statsRounded).append('<canvas> </canvas>');
         var canvas = document.querySelector(statsRounded + '>canvas');
@@ -118,29 +120,50 @@ $(document).ready( function(){
         ctx.stroke();
         ctx.closePath();
     }
-
     function navBar(){
         var nav = $('#container>nav>ul');
         for (k in json) {
-            // nav.append('<li><img src="img/player/thumbnails/'+ json[k].nom.toLowerCase() +'.jpg"><p>'+ json[k].nom.toUpperCase() +' '+ json[k].prenom +'</p><p>rank : '+ k +'</p></li>')
+            nav.append('<li id="' + json[k].nom.toLowerCase() + '"><img src="img/player/thumbnails/'+ json[k].nom.toLowerCase() +'.jpg"><p>'+ json[k].nom.toUpperCase() +' '+ json[k].prenom +'</p><p>rank : '+ k +'</p></li>');
+            that = $('#container>nav>ul>li#' + json[k].nom.toLowerCase());
+            that.click(function(){
+                $('#container>nav>ul>li').removeClass('click')
+                this.className = 'click';
+                console.log($(this))
+                window.location = url + '?' + $(this)[0].id;
+            })
         }
     }
 
-    navBar();
 
-    statsBar('.statsBar.tous');
-    statsBar('.statsBar.grdchelem');
-    statsBar('.statsBar.masters1000');
-    statsBar('.statsBar.tieBreaks');
-    statsBar('.statsBar.vsTop10');
-    statsBar('.statsBar.dernierSet');
-    statsBar('.statsBar.afterWin1Set');
-    statsBar('.statsBar.afterLost1Set');
-    statsBar('.statsBar.vsDroitier');
-    statsRound('.statsRounded.dur');
-    statsRound('.statsRounded.clay');
-    statsRound('.statsRounded.grass');
+    statsBar('#resume2013 .statsBar.tous');
+    statsBar('#resume2013 .statsBar.grdchelem');
+    statsBar('#resume2013 .statsBar.masters1000');
+    statsBar('#resume2013 .statsBar.tieBreaks');
+    statsBar('#resume2013 .statsBar.vsTop10');
+    statsBar('#resume2013 .statsBar.dernierSet');
+    statsBar('#resume2013 .statsBar.afterWin1Set');
+    statsBar('#resume2013 .statsBar.afterLost1Set');
+    statsBar('#resume2013 .statsBar.vsDroitier');
+    statsRound('#resume2013 .statsRounded.dur');
+    statsRound('#resume2013 .statsRounded.clay');
+    statsRound('#resume2013 .statsRounded.grass');
+
+    statsBar('#resumeCarriere .statsBar.tous');
+    statsBar('#resumeCarriere .statsBar.grdchelem');
+    statsBar('#resumeCarriere .statsBar.masters1000');
+    statsBar('#resumeCarriere .statsBar.tieBreaks');
+    statsBar('#resumeCarriere .statsBar.vsTop10');
+    statsBar('#resumeCarriere .statsBar.dernierSet');
+    statsBar('#resumeCarriere .statsBar.afterWin1Set');
+    statsBar('#resumeCarriere .statsBar.afterLost1Set');
+    statsBar('#resumeCarriere .statsBar.vsDroitier');
+    statsRound('#resumeCarriere .statsRounded.dur');
+    statsRound('#resumeCarriere .statsRounded.clay');
+    statsRound('#resumeCarriere .statsRounded.grass');
 
     scrollbar('#container>nav>div.scrollbar','#container>nav>ul');
-    scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child,#resume2013>div:nth-child(2)');
+    scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
+    scrollbar('#resumeCarriere>div.scrollbar','#resumeCarriere>div');
+
+    // navBar();
 });
