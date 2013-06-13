@@ -476,10 +476,10 @@
 		tooltipClass : 'tooltip', // added to the navigation, but the title attribute is blank unless the link text-indent is negative
 
 		// Callbacks
-		initialized     : null,   // callback when MovingBoxes has completed initialization
-		initChange      : null,   // callback upon change panel initialization
-		beforeAnimation : null,   // callback before any animation occurs
-		completed       : null    // callback after animation completes
+		initialized     : true,   // callback when MovingBoxes has completed initialization
+		initChange      : true,   // callback upon change panel initialization
+		beforeAnimation : true,   // callback before any animation occurs
+		completed       : true    // callback after animation completes
 	};
 
 	$.fn.movingBoxes = function(options, callback){

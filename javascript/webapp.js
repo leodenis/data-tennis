@@ -250,6 +250,44 @@ $(document).ready( function(){
                 statsRound('#statistique .statsRounded.prg',true);
                 statsRound('#statistique .statsRounded.tpgr',true); 
                 scrollbar('#statistique>div.scrollbar','#statistique>div:nth-child(2)');
+
+                var centi=0;
+                var setTime = null;
+                var breakPoint = document.getElementById("break").innerHTML;
+                var aces = document.getElementById("aces").innerHTML;
+                var returnGame = document.getElementById("returnGame").innerHTML;
+                var returnGame = document.getElementById("returnGame2").innerHTML;
+
+                myFunction();
+
+                function myFunction()
+                    {
+                        centi++;
+                        console.log(centi);
+                        setTime = setInterval(test,25);
+                    }
+                function test(){
+                        centi++;
+                        console.log(centi);
+                        document.getElementById("break").innerHTML = centi;
+                        if (centi >= breakPoint) {
+                            clearInterval(setTime);
+                        };
+                        document.getElementById("aces").innerHTML = centi;
+                        if (centi >= aces) {
+                            clearInterval(setTime);
+                        };
+                        document.getElementById("returnGame").innerHTML = centi;
+                        if (centi >= returnGame) {
+                            clearInterval(setTime);
+                        };
+                        document.getElementById("returnGame2").innerHTML = centi;
+                        if (centi >= returnGame2) {
+                            clearInterval(setTime);
+                        };
+                    }
+
+
             }
         })
         statsBar('#resume2013 .statsBar.tous');
@@ -266,13 +304,6 @@ $(document).ready( function(){
         statsRound('#resume2013 .statsRounded.grass'); 
         scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
     }
-
-
-
-
-
-
-
 
     scrollbar('#container>nav>div.scrollbar','#container>nav>ul');
 
