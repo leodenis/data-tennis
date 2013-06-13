@@ -110,6 +110,23 @@ $(document).ready( function(){
         ctx.fillText($(statsRounded).data('pourcent') + '%',canvas.width/3,canvas.height/7*4);
         textWrite = true;
         ctx.beginPath();
+        // myFunction();
+        // test=0;
+        // setTimes = null;
+        // function myFunction()
+        // {
+        //     var interval = setInterval(test,25);
+        // }
+        // function test(){
+        //    if (test >= 25) {
+        //         clearTimeout(interval);
+        //     }
+        //     test++;
+        //     console.log(test);
+
+        // }      
+
+        
         ctx.arc(canvas.width/2, canvas.width/2, canvas.width/3, 1.5 * (Math.PI*2), 1.5 * (Math.PI*2) - ((Math.PI*2)*$(statsRounded).data('pourcent')/100), true); 
         ctx.strokeStyle="#339cb4";
         ctx.lineWidth = 25;
@@ -258,15 +275,15 @@ $(document).ready( function(){
                 var returnGame = document.getElementById("returnGame").innerHTML;
                 var returnGame = document.getElementById("returnGame2").innerHTML;
 
-                myFunction();
+                countNumber();
 
-                function myFunction()
+                function countNumber()
                     {
                         centi++;
                         console.log(centi);
-                        setTime = setInterval(test,25);
+                        setTime = setInterval(numb,25);
                     }
-                function test(){
+                function numb(){
                         centi++;
                         console.log(centi);
                         document.getElementById("break").innerHTML = centi;
@@ -285,7 +302,7 @@ $(document).ready( function(){
                         if (centi >= returnGame2) {
                             clearInterval(setTime);
                         };
-                    }
+                }
 
 
             }
