@@ -132,26 +132,32 @@ $(document).ready( function(){
         }
     }
     var marge = {};
-    function selectBar(selector){
+    function selectBar(selector,taille){
         marge[selector] = 0;
-        $(selector + '>div.leftSelect').click(function(){
-            marge[selector] -= 70;
-            $(this).siblings('ul').animate({'margin-left':marge[selector]});
-            $(selector + '>ul>li.focus').removeClass('focus').next().addClass('focus');
-            changeData($('article>nav>ul>li.active')[0].classList[0]);
-        });
         $(selector + '>div.rightSelect').click(function(){
-            marge[selector] += 70;
-            $(this).siblings('ul').animate({'margin-left':marge[selector]});
-            $(selector + '>ul>li.focus').removeClass('focus').prev().addClass('focus');
-            changeData($('article>nav>ul>li.active')[0].classList[0]);
+            if(marge[selector] < 0){
+                marge[selector] += 70;
+                $(this).siblings('ul').animate({'margin-left':marge[selector]});
+                $(selector + '>ul>li.focus').removeClass('focus').prev().addClass('focus');
+                changeData($('article>nav>ul>li.active')[0].classList[0]);
+            }
+        });
+        $(selector + '>div.leftSelect').click(function(){
+            if(marge[selector] > -(taille * 70)){
+                marge[selector] -= 70;
+                $(this).siblings('ul').animate({'margin-left':marge[selector]});
+                $(selector + '>ul>li.focus').removeClass('focus').next().addClass('focus');
+                changeData($('article>nav>ul>li.active')[0].classList[0]);  
+            }
         });
         return marge;
     }
     var map = {};
-    function Maptitres(selector){
+    function Maptitres(selector, data){
+        console.log(data)
         $(selector).css({'height':'-webkit-calc(100% - 80px )','width':'-webkit-calc(100% / 12 * 8 )','margin':'auto'});
         var latlng = new google.maps.LatLng(40, 10);
+        var geocoder = new google.maps.Geocoder();
         var settings = {
             zoom: 1,
             center: latlng,
@@ -197,9 +203,22 @@ $(document).ready( function(){
             ]
         };   
         map[selector] = new google.maps.Map($(selector)[0], settings);
+        map[selector].marker = {};
+        for(f in data){
+            geocoder.geocode( { 'address': data[f]}, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                map[selector].marker = new google.maps.Marker({
+                    map: map[selector],
+                    position: results[0].geometry.location,
+                    icon: './img/marker.png'
+                });
+              } else {
+                // alert("Geocode was not successful for the following reason: " + status);
+              }
+            });
+        }
     }
-    function MarkerMap(map){
-
+    function MarkerMap(map, data){
     }
     function navBar(){
         var nav = $('#container>nav>ul');
@@ -215,11 +234,15 @@ $(document).ready( function(){
         }
         $('article>nav>ul>li').click(function(){
             var claSS = $(this)[0].className;
-            $('article>nav>ul>li').removeClass('active');
-            $('section').css({'display':'none'});
-            $('#' + claSS).css({'display':'block'});
-            $(this).addClass('active');
-            changeData(claSS);
+            if($('article>nav>ul>li.active').hasClass(claSS)){
+
+            }else{
+                $('article>nav>ul>li').removeClass('active');
+                $('section').css({'display':'none'});
+                $('#' + claSS).css({'display':'block'});
+                $(this).addClass('active');
+                changeData(claSS);
+            }
         })
     }
 
@@ -236,6 +259,8 @@ $(document).ready( function(){
                     option.statistique[0] = $('#statistique nav:first-child>ul>li.focus')[0].textContent.toLowerCase();
                     option.statistique[1] = $('#statistique nav:nth-child(2)>ul>li.focus')[0].textContent.toLowerCase();
                     option.statistique[2] = $('#statistique nav:last-child>ul>li.focus')[0].textContent.toLowerCase();
+                }if ($('article>nav>ul>li.active')[0].classList[0] == "finales") {
+                    option.finales = $('#finales nav>ul>li.focus')[0].textContent.toLowerCase();
                 }
                 parseData(onglet,data,option);
             }
@@ -346,16 +371,23 @@ $(document).ready( function(){
             var temp = data.titre[option.titres].gazon + data.titre[option.titres].terreBattue + data.titre[option.titres].dur;
             $('#titres>div:first-child>div:nth-child(2)>h3').html(temp + ' titres');
 
+            Maptitres('#titres>div>div>div#mapTitre',data.titre[option.titres].lieu);
             statsNumber('#titres .statsNumber.dur',true);
             statsNumber('#titres .statsNumber.clay',false);
             statsNumber('#titres .statsNumber.grass',true);
             scrollbar('#titres>div.scrollbar','#titres>div:nth-child(2)');
         }else if(onglet == "finales"){
+            $('#finales .statsNumber.dur>h1').html(data.finales[option.finales].dur + ' Finales');
+            $('#finales .statsNumber.clay>h1').html(data.finales[option.finales].terreBattue + ' Finales');
+            $('#finales .statsNumber.grass>h1').html(data.finales[option.finales].gazon + ' Finales');
+            var temp = data.finales[option.finales].gazon + data.finales[option.finales].terreBattue + data.finales[option.finales].dur;
+            $('#finales>div:first-child>div:nth-child(2)>h3').html(temp + ' titres');
 
-            Maptitres('#finales>div>div>div#mapTitre');
-            statsRound('#finales .statsRounded.dur');
-            statsRound('#finales .statsRounded.clay');
-            statsRound('#finales .statsRounded.grass');
+            Maptitres('#finales>div>div>div#mapFinales',data.finales[option.finales].lieu);
+            statsNumber('#finales .statsNumber.dur',true);
+            statsNumber('#finales .statsNumber.clay',false);
+            statsNumber('#finales .statsNumber.grass',true);
+            scrollbar('#finales>div.scrollbar','#finales>div:nth-child(2)');
         }else if(onglet == "statistique"){
 
             statsRound('#statistique .statsRounded.pgsr1s',true);
@@ -370,9 +402,9 @@ $(document).ready( function(){
 
     navBar();
     changeData('resume2013')
-    selectBar('#titres>div>div>nav:first-child');
-    selectBar('#statistique>div>nav:first-child');
-    selectBar('#statistique>div>nav:nth-child(2)');
-    selectBar('#statistique>div>nav:nth-child(3)');
-    Maptitres('#titres>div>div>div#mapTitre');
+    selectBar('#titres>div>div>nav:first-child',9);
+    selectBar('#finales>div>div>nav:first-child',9);
+    selectBar('#statistique>div>nav:first-child',9);
+    selectBar('#statistique>div>nav:nth-child(2)',2);
+    selectBar('#statistique>div>nav:nth-child(3)',1);
 });
