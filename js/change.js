@@ -14,7 +14,7 @@
 			else if($.browser.name == 'firefox'){
 				var changeterrain = document.getElementById("courttennis"); 
 				changeterrain.className= "hide"; 
-				// $(".terraintennis").css("margin-top", "-7px");
+				$(".terraintennis").css("margin-top", "-7px");
 				// $("#lueur1").css({"margin-top":"-99px","width":"93px","height":"92px","margin-left":"74px"});
 				// $("#lueur2").css("height", "92px");
 				// $("#lueur3").css({"width":"93px","height":"92px"});

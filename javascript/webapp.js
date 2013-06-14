@@ -118,6 +118,23 @@ $(document).ready( function(){
         ctx.fillText($(statsRounded).data('pourcent') + '%',canvas.width/3,canvas.height/7*4);
         textWrite = true;
         ctx.beginPath();
+        // myFunction();
+        // test=0;
+        // setTimes = null;
+        // function myFunction()
+        // {
+        //     var interval = setInterval(test,25);
+        // }
+        // function test(){
+        //    if (test >= 25) {
+        //         clearTimeout(interval);
+        //     }
+        //     test++;
+        //     console.log(test);
+
+        // }      
+
+        
         ctx.arc(canvas.width/2, canvas.width/2, canvas.width/3, 1.5 * (Math.PI*2), 1.5 * (Math.PI*2) - ((Math.PI*2)*$(statsRounded).data('pourcent')/100), true); 
         ctx.strokeStyle="#339cb4";
         ctx.lineWidth = 25;
@@ -246,6 +263,33 @@ $(document).ready( function(){
         })
     }
 
+    countNumber();
+    function countNumber()
+        {
+            centi++;
+            console.log(centi);
+            setTime = setInterval(numb,25);
+        }
+    function numb(){
+            centi++;
+            console.log(centi);
+            document.getElementById("break").innerHTML = centi;
+            if (centi >= breakPoint) {
+                clearInterval(setTime);
+            };
+            document.getElementById("aces").innerHTML = centi;
+            if (centi >= aces) {
+                clearInterval(setTime);
+            };
+            document.getElementById("returnGame").innerHTML = centi;
+            if (centi >= returnGame) {
+                clearInterval(setTime);
+            };
+            document.getElementById("returnGame2").innerHTML = centi;
+            if (centi >= returnGame2) {
+                clearInterval(setTime);
+            };
+    }
     function changeData(onglet){
         var urlHere = window.location.toString().match(/#\/([a-z]+)/);
         urlHere = urlHere[1];

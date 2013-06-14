@@ -35,6 +35,8 @@ header{
 	top: 147px;
 	width: 22px;
 -webkit-animation:animated_img 2s;
+-moz-animation:animated_img 2s;
+-ms-animation:animated_img 2s;
 
 }
 
@@ -66,7 +68,33 @@ header{
 	-webkit-transform: rotate(360deg)
 	}
 }
+	-webkit-animation:animated_imghover 2s;
 
+}
+
+
+@-moz-keyframes animated_imghover
+	{
+0%
+	{
+	-moz-transform: rotate(0deg);
+	}
+100%
+	{
+	-moz-transform: rotate(360deg)
+	}
+}
+@-moz-keyframes animated_img
+	{
+0%
+	{
+	-moz-transform: rotate(0deg);
+	}
+100%
+	{
+	-moz-transform: rotate(360deg)
+	}
+}
 
 #containerFirstPart{	
 	width: 960px;
