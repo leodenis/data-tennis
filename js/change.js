@@ -40,7 +40,7 @@
 		      "Rafael Nadal",
 		      "David Ferrer",
 		      "Tomas Berdych",
-		      "Juan Martin Del Potro",
+		      "Juan Martin DelPotro",
 		      "Jo-Wilfried Tsonga",
 		      "Richard Gasquet",
 		      "Stanislas Wawrinka",
@@ -55,7 +55,7 @@
 		      if(search1 == ''){
 				  $('#buttonFourPart').attr('action', '#containerFourPart');
 		      }else{
-			 	 //  search1 = search1.replace(/ /g,"");
+
 				  search1 = search1.toLowerCase() 
 					var elem = search1.split(' ');
 					var taille = elem.length - 1;
