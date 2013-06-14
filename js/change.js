@@ -40,21 +40,10 @@
 		      "Rafael Nadal",
 		      "David Ferrer",
 		      "Tomas Berdych",
-		      "Juan Martin Del Potro",
+		      "Juan Martin DelPotro",
 		      "Jo-Wilfried Tsonga",
 		      "Richard Gasquet",
 		      "Stanislas Wawrinka",
-		      "Marin Cilic",
-		      "Janko Tipsarevic",
-		      "Nicolas Almagro",
-		      "Tomy Haas",
-		      "Kei Nishikori",
-		      "Milos Raonic",
-		      "Juan Monaco",
-		      "Gilles Simon",
-		      "Philipp Kohlschreiber",
-		      "Sam Querrey",
-
 		    ];
 		    $( "#inputText" ).autocomplete({
 		      source: availableTags
@@ -66,13 +55,13 @@
 		      if(search1 == ''){
 				  $('#buttonFourPart').attr('action', '#containerFourPart');
 		      }else{
-			 	 //  search1 = search1.replace(/ /g,"");
-				  // search1 = search1.toLowerCase() 
+
+				  search1 = search1.toLowerCase() 
 					var elem = search1.split(' ');
 					var taille = elem.length - 1;
 					search1 = elem[taille];
-				  $('#buttonFourPart').attr('action', 'index.html?'+search1);
-				  $('#buttonAnalysePerf').attr('href', 'index.html?'+search1);     	
+				  $('#buttonFourPart').attr('action', 'webapp.html#/'+search1);
+				  $('#buttonAnalysePerf').attr('href', 'webapp.html#/'+search1);     	
 		      }
 
 
@@ -119,7 +108,7 @@
 		 	 	document.getElementById("changeNamePlayer").innerHTML ="Tomas Berdych"; 
 		 	 	$("#submit").removeAttr("disabled");
 		 	 }
-		 	 else if (search3 == 'juan martin del potro'){
+		 	 else if (search3 == 'juan martin delpotro'){
 		 	 	$('#changeImgPlayer').attr('src','img/player/7_Juan_Martin_DEL_POTRO.png');
 		 	 	document.getElementById("changeNamePlayer").innerHTML ="juan Martin Del Potro";
 		 	 	$("#submit").removeAttr("disabled"); 
@@ -233,7 +222,7 @@
 		 	 	document.getElementById("changeNamePlayer").innerHTML ="Tomas Berdych"; 
 		 	 	$("#submit").removeAttr("disabled");
 		 	 }
-		 	 else if (search2 == 'juan martin del potro'){
+		 	 else if (search2 == 'juan martin delpotro'){
 		 	 	$('#changeImgPlayer').attr('src','img/player/7_Juan_Martin_DEL_POTRO.png');
 		 	 	document.getElementById("changeNamePlayer").innerHTML ="juan Martin Del Potro"; 
 		 	 	$("#submit").removeAttr("disabled");
