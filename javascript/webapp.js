@@ -1,5 +1,6 @@
 $(document).ready( function(){
-    var json ;
+    var json = {};
+    var option = {};
     var data = {};
     $.ajax({
         url: 'javascript/data.json',
@@ -54,41 +55,45 @@ $(document).ready( function(){
             drag: function(e,ui){
                 var top = ui.position.top;
                 var dragg = ($(elScrollable).height() - $(scrollbarContainer).height()) * top / $(scrollbarContainer).height();
-                console.log(dragg)
                 $(elScrollable).css({'margin-top':-dragg})
             }
         })
     }
-    function statsBar(statsContainer){
+    function statsBar(statsContainer,quotient){
         $(statsContainer + '>canvas').remove();
         $(statsContainer).append('<canvas> </canvas>');
         var canvas = document.querySelector(statsContainer + '>canvas');
         canvas.width = $(statsContainer).width();
         canvas.height = $(statsContainer).parent().height();
+        canvas.width = canvas.width;
         var ctx = canvas.getContext('2d');
 
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        
+        ctx.beginPath();
         ctx.fillStyle="#fff";
-        ctx.fillRect((($(statsContainer).width()/3*2) - $(statsContainer).data('gagner') - 1),5,1,25);
+        ctx.fillRect((($(statsContainer).width()/3*2) - ($(statsContainer).data('gagner')*quotient) - 1),5,1,25);
         ctx.font="normal 15px 'proximanova'";
         ctx.fillStyle = "#fff";
-        ctx.fillText($(statsContainer).data('gagner'),(($(statsContainer).width()/3*2) - $(statsContainer).data('gagner')),45);
+        ctx.fillText($(statsContainer).data('gagner'),(($(statsContainer).width()/3*2) - $(statsContainer).data('gagner')*quotient),45);
         textWrite = true;
 
         ctx.fillStyle="#339cb4";
-        ctx.fillRect(($(statsContainer).width()/3*2) - $(statsContainer).data('gagner'),5,$(statsContainer).data('gagner') ,20);
+        ctx.fillRect(($(statsContainer).width()/3*2) - ($(statsContainer).data('gagner')*quotient),5,($(statsContainer).data('gagner')*quotient) ,20);
 
         ctx.fillStyle="#fff";
         ctx.fillRect(($(statsContainer).width()/3*2),0,1,30);
 
         ctx.fillStyle="#c2542e";
-        ctx.fillRect(($(statsContainer).width()/3*2+1),5,$(statsContainer).data('perdu'),20);
+        ctx.fillRect(($(statsContainer).width()/3*2+1),5,($(statsContainer).data('perdu')*quotient),20);
 
         ctx.fillStyle="#fff";
-        ctx.fillRect((($(statsContainer).width()/3*2+1)+($(statsContainer).data('perdu'))),5,1,25);
+        ctx.fillRect((($(statsContainer).width()/3*2+1)+($(statsContainer).data('perdu')*quotient)),5,1,25);
         ctx.font="normal 15px 'proximanova'";
         ctx.fillStyle = "#fff";
-        ctx.fillText($(statsContainer).data('perdu'),($(statsContainer).width()/3*2+1+($(statsContainer).data('perdu'))),45);
+        ctx.fillText($(statsContainer).data('perdu'),($(statsContainer).width()/3*2+1+($(statsContainer).data('perdu')*quotient)),45);
         textWrite = true;
+        ctx.stroke();
     }
     function statsRound(statsRounded,taille){
         $(statsRounded + '>canvas').remove();
@@ -119,21 +124,31 @@ $(document).ready( function(){
         ctx.stroke();
         ctx.closePath();
     }
+    function statsNumber(statsNumbered,taille){
+        var h1 = $(statsNumbered + '>h1');
+        $(h1).css({'width':Math.abs($(statsNumbered).width()-12-$(statsNumbered).siblings('img').width()),'height':Math.abs($(statsNumbered).width()-12-$(statsNumbered).siblings('img').width())});
+        if(taille == true){
+            $(h1).css({'margin-left':$(statsNumbered).siblings('img').width()});
+        }
+    }
     var marge = {};
     function selectBar(selector){
         marge[selector] = 0;
         $(selector + '>div.leftSelect').click(function(){
             marge[selector] -= 70;
             $(this).siblings('ul').animate({'margin-left':marge[selector]});
-            $(selector + '>ul>li.focus').removeClass('focus').next().addClass('focus')
+            $(selector + '>ul>li.focus').removeClass('focus').next().addClass('focus');
+            changeData($('article>nav>ul>li.active')[0].classList[0]);
         });
         $(selector + '>div.rightSelect').click(function(){
             marge[selector] += 70;
             $(this).siblings('ul').animate({'margin-left':marge[selector]});
-            $(selector + '>ul>li.focus').removeClass('focus').prev().addClass('focus')
+            $(selector + '>ul>li.focus').removeClass('focus').prev().addClass('focus');
+            changeData($('article>nav>ul>li.active')[0].classList[0]);
         });
         return marge;
     }
+    var map = {};
     function Maptitres(selector){
         $(selector).css({'height':'-webkit-calc(100% - 80px )','width':'-webkit-calc(100% / 12 * 8 )','margin':'auto'});
         var latlng = new google.maps.LatLng(40, 10);
@@ -180,10 +195,11 @@ $(document).ready( function(){
                     ]
                 }
             ]
-        };
+        };   
+        map[selector] = new google.maps.Map($(selector)[0], settings);
+    }
+    function MarkerMap(map){
 
-            
-        return new google.maps.Map($(selector)[0], settings);
     }
     function navBar(){
         var nav = $('#container>nav>ul');
@@ -194,31 +210,17 @@ $(document).ready( function(){
                 $('#container>nav>ul>li').attr('click','off');
                 $(this).attr('click','on');
                 window.location = url + '#/' + $(this)[0].className;
-                changeData($('article>nav>ul>li.active').hasClass());
+                changeData($('article>nav>ul>li.active')[0].classList[0]);
             })
         }
         $('article>nav>ul>li').click(function(){
             var claSS = $(this)[0].className;
-            // console.log($(this));
             $('article>nav>ul>li').removeClass('active');
             $('section').css({'display':'none'});
             $('#' + claSS).css({'display':'block'});
             $(this).addClass('active');
             changeData(claSS);
         })
-        // statsBar('#resume2013 .statsBar.tous');
-        // statsBar('#resume2013 .statsBar.grdchelem');
-        // statsBar('#resume2013 .statsBar.masters1000');
-        // statsBar('#resume2013 .statsBar.tieBreaks');
-        // statsBar('#resume2013 .statsBar.vsTop10');
-        // statsBar('#resume2013 .statsBar.dernierSet');
-        // statsBar('#resume2013 .statsBar.afterWin1Set');
-        // statsBar('#resume2013 .statsBar.afterLost1Set');
-        // statsBar('#resume2013 .statsBar.vsDroitier');
-        // statsRound('#resume2013 .statsRounded.dur');
-        // statsRound('#resume2013 .statsRounded.clay');
-        // statsRound('#resume2013 .statsRounded.grass'); 
-        // scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
     }
 
     function changeData(onglet){
@@ -227,55 +229,126 @@ $(document).ready( function(){
         for(l in json){
             if(json[l].nom.toLowerCase().replace(' ','') == urlHere){
                 data = json[l];
-                parseData(onglet,data);
+                if ($('article>nav>ul>li.active')[0].classList[0] == "titres") {
+                    option.titres = $('#titres nav>ul>li.focus')[0].textContent.toLowerCase();
+                }if ($('article>nav>ul>li.active')[0].classList[0] == "statistique") {
+                    option.statistique = {};
+                    option.statistique[0] = $('#statistique nav:first-child>ul>li.focus')[0].textContent.toLowerCase();
+                    option.statistique[1] = $('#statistique nav:nth-child(2)>ul>li.focus')[0].textContent.toLowerCase();
+                    option.statistique[2] = $('#statistique nav:last-child>ul>li.focus')[0].textContent.toLowerCase();
+                }
+                parseData(onglet,data,option);
             }
         }
     }
 
     function parseData(onglet,data){
-        console.log(onglet)
-        console.log(data)
         $('#container>article>header>img').attr('src','img/player/thumbnails/big/'+ data.nom.toUpperCase().replace(' ','') + '.png')
         $('#container>article>header>div>h1').html( data.nom + ' ' + data.prenom);
         if(onglet == 'resume2013'){
-            console.log( $('#resume2013 div.statsBarContainer>div.statsBar.tous'))
-            $('#resume2013 div.statsBarContainer>div.statsBar.tous').attr('data-gagner',data.nbMatchGagner[2013].tous.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.tous').data('gagner',data.nbMatchGagner[2013].tous.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.tous').data('perdu',data.nbMatchGagner[2013].tous.perdu);
+            $('#resume2013 div.statsBarContainer>div.statsBar.grdchelem').data('gagner',data.nbMatchGagner[2013].gdChelem.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.grdchelem').data('perdu',data.nbMatchGagner[2013].gdChelem.perdu);
+            $('#resume2013 div.statsBarContainer>div.statsBar.masters1000').data('gagner',data.nbMatchGagner[2013].master.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.masters1000').data('perdu',data.nbMatchGagner[2013].master.perdu);
 
-            statsBar('#resume2013 div.statsBarContainer>div.statsBar.tous');
-            statsBar('#resume2013 .statsBar.grdchelem');
-            statsBar('#resume2013 .statsBar.masters1000');
-            statsBar('#resume2013 .statsBar.tieBreaks');
-            statsBar('#resume2013 .statsBar.vsTop10');
-            statsBar('#resume2013 .statsBar.dernierSet');
-            statsBar('#resume2013 .statsBar.afterWin1Set');
-            statsBar('#resume2013 .statsBar.afterLost1Set');
-            statsBar('#resume2013 .statsBar.vsDroitier');
+            $('#resume2013 div.statsBarContainer>div.statsBar.tieBreaks').data('gagner',data.pointSpecifique[2013].tiebreaks.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.tieBreaks').data('perdu',data.pointSpecifique[2013].tiebreaks.perdu);
+            $('#resume2013 div.statsBarContainer>div.statsBar.vsTop10').data('gagner',data.pointSpecifique[2013].contreTop10.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.vsTop10').data('perdu',data.pointSpecifique[2013].contreTop10.perdu);
+            $('#resume2013 div.statsBarContainer>div.statsBar.dernierSet').data('gagner',data.pointSpecifique[2013].gagneDernierSet.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.dernierSet').data('perdu',data.pointSpecifique[2013].gagneDernierSet.perdu);
+            $('#resume2013 div.statsBarContainer>div.statsBar.afterWin1Set').data('gagner',data.pointSpecifique[2013].apresGagner1Set.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.afterWin1Set').data('perdu',data.pointSpecifique[2013].apresGagner1Set.perdu);
+            $('#resume2013 div.statsBarContainer>div.statsBar.afterLost1Set').data('gagner',data.pointSpecifique[2013].apresPerdu1Set.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.afterLost1Set').data('perdu',data.pointSpecifique[2013].apresPerdu1Set.perdu);
+            $('#resume2013 div.statsBarContainer>div.statsBar.vsDroitier').data('gagner',data.pointSpecifique[2013].contreDroitier.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.vsDroitier').data('perdu',data.pointSpecifique[2013].contreDroitier.perdu);
+            $('#resume2013 div.statsBarContainer>div.statsBar.vsGaucher').data('gagner',data.pointSpecifique[2013].contreGaucher.gagner);
+            $('#resume2013 div.statsBarContainer>div.statsBar.vsGaucher').data('perdu',data.pointSpecifique[2013].contreGaucher.perdu);
+
+            var gazon = Math.ceil(data.environnement[2013].gazon.gagner / (data.environnement[2013].gazon.gagner + data.environnement[2013].gazon.perdu) * 100) > 0 ? Math.ceil(data.environnement[2013].gazon.gagner / (data.environnement[2013].gazon.gagner + data.environnement[2013].gazon.perdu) * 100) : 0;
+            var clay = Math.ceil(data.environnement[2013].terreBattue.gagner / (data.environnement[2013].terreBattue.gagner + data.environnement[2013].terreBattue.perdu) * 100) > 0 ? Math.ceil(data.environnement[2013].terreBattue.gagner / (data.environnement[2013].terreBattue.gagner + data.environnement[2013].terreBattue.perdu) * 100) : 0;
+            var dur = Math.ceil(data.environnement[2013].dur.gagner / (data.environnement[2013].dur.gagner + data.environnement[2013].dur.perdu) * 100 ) > 0 ? Math.ceil(data.environnement[2013].dur.gagner / (data.environnement[2013].dur.gagner + data.environnement[2013].dur.perdu) * 100 ) : 0;
+            $('#resume2013 div.surface>div.statsRounded.dur').data('pourcent',dur);
+            $('#resume2013 div.surface>div.statsRounded.clay').data('pourcent',clay);
+            $('#resume2013 div.surface>div.statsRounded.grass').data('pourcent',gazon);
+
+            statsBar('#resume2013 .statsBar.tous',5);
+            statsBar('#resume2013 .statsBar.grdchelem',5);
+            statsBar('#resume2013 .statsBar.masters1000',5);
+            statsBar('#resume2013 .statsBar.tieBreaks',5);
+            statsBar('#resume2013 .statsBar.vsTop10',5);
+            statsBar('#resume2013 .statsBar.dernierSet',5);
+            statsBar('#resume2013 .statsBar.afterWin1Set',5);
+            statsBar('#resume2013 .statsBar.afterLost1Set',5);
+            statsBar('#resume2013 .statsBar.vsDroitier',5);
             statsRound('#resume2013 .statsRounded.dur');
             statsRound('#resume2013 .statsRounded.clay');
             statsRound('#resume2013 .statsRounded.grass'); 
             scrollbar('#resume2013>div.scrollbar','#resume2013>div:first-child, #resume2013>div:nth-child(2)');
         }else if(onglet == 'resumeCarriere'){
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.tous').data('gagner',data.nbMatchGagner.carriere.tous.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.tous').data('perdu',data.nbMatchGagner.carriere.tous.perdu);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.grdchelem').data('gagner',data.nbMatchGagner.carriere.gdChelem.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.grdchelem').data('perdu',data.nbMatchGagner.carriere.gdChelem.perdu);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.masters1000').data('gagner',data.nbMatchGagner.carriere.master.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.masters1000').data('perdu',data.nbMatchGagner.carriere.master.perdu);
 
-            statsBar('#resumeCarriere .statsBar.tous');
-            statsBar('#resumeCarriere .statsBar.grdchelem');
-            statsBar('#resumeCarriere .statsBar.masters1000');
-            statsBar('#resumeCarriere .statsBar.tieBreaks');
-            statsBar('#resumeCarriere .statsBar.vsTop10');
-            statsBar('#resumeCarriere .statsBar.dernierSet');
-            statsBar('#resumeCarriere .statsBar.afterWin1Set');
-            statsBar('#resumeCarriere .statsBar.afterLost1Set');
-            statsBar('#resumeCarriere .statsBar.vsDroitier');
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.tieBreaks').data('gagner',data.pointSpecifique.carriere.tiebreaks.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.tieBreaks').data('perdu',data.pointSpecifique.carriere.tiebreaks.perdu);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.vsTop10').data('gagner',data.pointSpecifique.carriere.contreTop10.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.vsTop10').data('perdu',data.pointSpecifique.carriere.contreTop10.perdu);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.dernierSet').data('gagner',data.pointSpecifique.carriere.gagneDernierSet.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.dernierSet').data('perdu',data.pointSpecifique.carriere.gagneDernierSet.perdu);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.afterWin1Set').data('gagner',data.pointSpecifique.carriere.apresGagner1Set.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.afterWin1Set').data('perdu',data.pointSpecifique.carriere.apresGagner1Set.perdu);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.afterLost1Set').data('gagner',data.pointSpecifique.carriere.apresPerdu1Set.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.afterLost1Set').data('perdu',data.pointSpecifique.carriere.apresPerdu1Set.perdu);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.vsDroitier').data('gagner',data.pointSpecifique.carriere.contreDroitier.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.vsDroitier').data('perdu',data.pointSpecifique.carriere.contreDroitier.perdu);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.vsGaucher').data('gagner',data.pointSpecifique.carriere.contreGaucher.gagner);
+            $('#resumeCarriere div.statsBarContainer>div.statsBar.vsGaucher').data('perdu',data.pointSpecifique.carriere.contreGaucher.perdu);
+
+            var temp = 200;
+            var gazon = Math.ceil(data.environnement.carriere.gazon.gagner / (data.environnement.carriere.gazon.gagner + data.environnement.carriere.gazon.perdu) * 100) > 0 ? Math.ceil(data.environnement.carriere.gazon.gagner / (data.environnement.carriere.gazon.gagner + data.environnement.carriere.gazon.perdu) * 100) : 0;
+            var clay = Math.ceil(data.environnement.carriere.terreBattue.gagner / (data.environnement.carriere.terreBattue.gagner + data.environnement.carriere.terreBattue.perdu) * 100) > 0 ? Math.ceil(data.environnement.carriere.terreBattue.gagner / (data.environnement.carriere.terreBattue.gagner + data.environnement.carriere.terreBattue.perdu) * 100) : 0;
+            var dur = Math.ceil(data.environnement.carriere.dur.gagner / (data.environnement.carriere.dur.gagner + data.environnement.carriere.dur.perdu) * 100 ) > 0 ? Math.ceil(data.environnement.carriere.dur.gagner / (data.environnement.carriere.dur.gagner + data.environnement.carriere.dur.perdu) * 100 ) : 0;
+            $('#resumeCarriere div.surface>div.statsRounded.dur').data('pourcent',dur);
+            $('#resumeCarriere div.surface>div.statsRounded.clay').data('pourcent',clay);
+            $('#resumeCarriere div.surface>div.statsRounded.grass').data('pourcent',gazon);
+
+            for(y in data.rankingHistory){
+                if(temp > data.rankingHistory[y]){
+                    temp = data.rankingHistory[y];
+                }
+            }
+            $('#resumeCarriere>div:first-child>div:first-child>h1').html('#' + temp);
+
+            statsBar('#resumeCarriere .statsBar.tous',0.3);
+            statsBar('#resumeCarriere .statsBar.grdchelem',0.3);
+            statsBar('#resumeCarriere .statsBar.masters1000',0.3);
+            statsBar('#resumeCarriere .statsBar.tieBreaks',0.35);
+            statsBar('#resumeCarriere .statsBar.vsTop10',0.35);
+            statsBar('#resumeCarriere .statsBar.dernierSet',0.35);
+            statsBar('#resumeCarriere .statsBar.afterWin1Set',0.35);
+            statsBar('#resumeCarriere .statsBar.afterLost1Set',0.35);
+            statsBar('#resumeCarriere .statsBar.vsDroitier',0.35);
             statsRound('#resumeCarriere .statsRounded.dur');
             statsRound('#resumeCarriere .statsRounded.clay');
             statsRound('#resumeCarriere .statsRounded.grass'); 
             scrollbar('#resumeCarriere>div.scrollbar','#resumeCarriere>div:first-child');
         }else if(onglet == 'titres'){
+            $('#titres .statsNumber.dur>h1').html(data.titre[option.titres].dur + ' Titres');
+            $('#titres .statsNumber.clay>h1').html(data.titre[option.titres].terreBattue + ' Titres');
+            $('#titres .statsNumber.grass>h1').html(data.titre[option.titres].gazon + ' Titres');
+            var temp = data.titre[option.titres].gazon + data.titre[option.titres].terreBattue + data.titre[option.titres].dur;
+            $('#titres>div:first-child>div:nth-child(2)>h3').html(temp + ' titres');
 
-            selectBar('#titres>div>div>nav:first-child');
-            Maptitres('#titres>div>div>div#mapTitre');
-            statsRound('#titres .statsRounded.dur');
-            statsRound('#titres .statsRounded.clay');
-            statsRound('#titres .statsRounded.grass');
+            statsNumber('#titres .statsNumber.dur',true);
+            statsNumber('#titres .statsNumber.clay',false);
+            statsNumber('#titres .statsNumber.grass',true);
             scrollbar('#titres>div.scrollbar','#titres>div:nth-child(2)');
         }else if(onglet == "finales"){
 
@@ -285,9 +358,6 @@ $(document).ready( function(){
             statsRound('#finales .statsRounded.grass');
         }else if(onglet == "statistique"){
 
-            selectBar('#statistique>div>nav:first-child');
-            selectBar('#statistique>div>nav:nth-child(2)');
-            selectBar('#statistique>div>nav:nth-child(3)');
             statsRound('#statistique .statsRounded.pgsr1s',true);
             statsRound('#statistique .statsRounded.pgsr2s',true);
             statsRound('#statistique .statsRounded.obdb',true);
@@ -300,4 +370,9 @@ $(document).ready( function(){
 
     navBar();
     changeData('resume2013')
+    selectBar('#titres>div>div>nav:first-child');
+    selectBar('#statistique>div>nav:first-child');
+    selectBar('#statistique>div>nav:nth-child(2)');
+    selectBar('#statistique>div>nav:nth-child(3)');
+    Maptitres('#titres>div>div>div#mapTitre');
 });

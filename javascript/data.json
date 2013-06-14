@@ -27,7 +27,7 @@
                     gagner:7,
                     perdu:0
                 },
-                master1000:{
+                master:{
                     ganger:11,
                     perdu:3
                 }
@@ -41,7 +41,7 @@
                     gagner:141,
                     perdu:27
                 },
-                master1000:{
+                master:{
                     gagner:183,
                     perdu:49
                 }
@@ -1129,7 +1129,7 @@
                     gagner:6,
                     perdu:1
                 },
-                master1000:{
+                master:{
                     ganger:12,
                     perdu:4
                 }
@@ -1143,7 +1143,7 @@
                     gagner:106,
                     perdu:28
                 },
-                master1000:{
+                master:{
                     gagner:135,
                     perdu:56
                 }
@@ -1273,8 +1273,7 @@
                 }
             }
         },
-        titre:{
-            
+        titre:{  
             2013:{
                 dur:2,
                 terreBattue:0,
@@ -2135,7 +2134,7 @@
                     gagner:5,
                     perdu:1
                 },
-                master1000:{
+                master:{
                     ganger:8,
                     perdu:3
                 }
@@ -2149,7 +2148,7 @@
                     gagner:252,
                     perdu:38
                 },
-                master1000:{
+                master:{
                     gagner:277,
                     perdu:81
                 }
@@ -2280,7 +2279,15 @@
             }
         },
         titre:{
-            
+            2013:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{
+                }
+            },
             2012:{
                 dur:4,
                 terreBattue:1,
@@ -2422,7 +2429,6 @@
                     11:'Melbourne'
                 }
             },
-
             2003:{
                 dur:4,
                 terreBattue:1,
@@ -2439,7 +2445,6 @@
                     7:'Wimbledon'
                 }
             },
-
             2002:{
                 dur:3,
                 terreBattue:1,
@@ -2452,7 +2457,6 @@
                     3:'Sydney'
                 }
             },
-
             2001:{
                 dur:0,
                 terreBattue:0,
@@ -3493,7 +3497,7 @@
                     gagner:0,
                     perdu:0
                 },
-                master1000:{
+                master:{
                     ganger:14,
                     perdu:1
                 }
@@ -3507,7 +3511,7 @@
                     gagner:157,
                     perdu:22
                 },
-                master1000:{
+                master:{
                     gagner:244,
                     perdu:48
                 }
@@ -4773,7 +4777,7 @@
                     gagner:5,
                     perdu:1
                 },
-                master1000:{
+                master:{
                     ganger:7,
                     perdu:4
                 }
@@ -4787,7 +4791,7 @@
                     gagner:97,
                     perdu:41
                 },
-                master1000:{
+                master:{
                     gagner:131,
                     perdu:84
                 }
@@ -6000,7 +6004,7 @@
                     gagner:4,
                     perdu:1
                 },
-                master1000:{
+                master:{
                     ganger:14,
                     perdu:5
                 }
@@ -6014,7 +6018,7 @@
                     gagner:81,
                     perdu:38
                 },
-                master1000:{
+                master:{
                     gagner:124,
                     perdu:75
                 }
@@ -7097,7 +7101,7 @@
                     gagner:2,
                     perdu:1
                 },
-                master1000:{
+                master:{
                     ganger:6,
                     perdu:3
                 }
@@ -7111,7 +7115,7 @@
                     gagner:56,
                     perdu:23
                 },
-                master1000:{
+                master:{
                     gagner:63,
                     perdu:33
                 }
@@ -7956,7 +7960,7 @@
                     gagner:4,
                     perdu:1
                 },
-                master1000:{
+                master:{
                     ganger:10,
                     perdu:5
                 }
@@ -7970,7 +7974,7 @@
                     gagner:66,
                     perdu:22
                 },
-                master1000:{
+                master:{
                     gagner:71,
                     perdu:43
                 }
@@ -8866,7 +8870,7 @@
                     gagner:6,
                     perdu:2
                 },
-                master1000:{
+                master:{
                     ganger:10,
                     perdu:5
                 }
@@ -8880,7 +8884,7 @@
                     gagner:60,
                     perdu:34
                 },
-                master1000:{
+                master:{
                     gagner:87,
                     perdu:63
                 }
@@ -10035,7 +10039,7 @@
                     gagner:7,
                     perdu:2
                 },
-                master1000:{
+                master:{
                     ganger:11,
                     perdu:3
                 }
@@ -10049,7 +10053,7 @@
                     gagner:64,
                     perdu:33
                 },
-                master1000:{
+                master:{
                     gagner:88,
                     perdu:59
                 }

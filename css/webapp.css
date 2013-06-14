@@ -76,8 +76,10 @@ section nav>ul>li:first-child{margin-left:60px;}
 #titres>div:first-child>div:nth-child(2){width: -webkit-calc(100% - 20px);float:left;padding: 10px;border-top:1px solid #242424;border-right:1px solid #0a0a0a; }
 #titres>div:first-child>div:nth-child(2)>h3{margin: 10px 0px;text-align:center;width:100%;}
 #titres>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 11px);float:left;border-left:1px solid #242424;}
+#titres>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 11px);float:left;border-left:1px solid #242424;}
 #titres div>h3{clear:both;float:none;}
-
+div.surface>div>h1{font-size: 45px;text-align:center;}
+div:nth-child(2).surface>div>h1{font-size: 45px;text-align:center;}
 
 #finales{overflow:hidden;}
 #finales>div:first-child{float:left;width: -webkit-calc(100% / 5 * 3 );background-color: #171719;}
@@ -114,7 +116,7 @@ div.statsBarContainer>div.statsBar{margin-left:250px;width:-webkit-calc(100% - 2
 div.surface:nth-child(3)>img{float:right;}
 div.surface>img{width:282px;float:left;z-index:1;} 
 div.surface>div:first-of-type{float:left;margin-top:-70px;margin-left:140px;background-image:url(../img/pointer.png);width:147px;height:31px;}
-div.surface>div.left{float:left;margin-top:-45px;margin-left:180px;background-image:url(../img/pointer.png);width:147px;height:31px;-moz-transform: scaleX(-1);-o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter: "FlipH";clear:both;}
+div.surface>div.left{float:right;margin-top:-45px;margin-right:162px;background-image:url(../img/pointer.png);width:147px;height:31px;-moz-transform: scaleX(-1);-o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter: "FlipH";}
 div.leftSelect{color:#fff;position:absolute; text-align: center; width: 40px; background-image: url(../img/deg.png);}
 div.rightSelect{color:#fff;position:absolute; text-align: center; width: 40px; background-image: url(../img/deg.png);margin-left:160px;-moz-transform: scaleX(-1);-o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter: "FlipH";}
 

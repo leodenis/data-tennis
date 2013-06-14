@@ -50,7 +50,7 @@
 			</header>
 			<nav>
 				<ul>
-					<li class="active resume2013">R&eacute;sum&eacute; 2013</li>
+					<li class="resume2013 active">R&eacute;sum&eacute; 2013</li>
 					<li class="resumeCarriere">R&eacute;sum&eacute; carri&egrave;re</li>
 					<li class="titres">Titres</li>
 					<li class="finales">Finales</li>
@@ -67,16 +67,19 @@
 							<div class="statsBarContainer">
 								<p>All</p>
 								<div class="tous statsBar" data-gagner="120" data-perdu="36">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>Grand Chelem</p>
 								<div class="grdchelem statsBar" data-gagner="250" data-perdu="10">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>Masters 1000</p>
-								<div class="masters1000 statsBar" data-gagner="80" data-perdu="80">
+								<div class="masters1000 statsBar" data-gagner="10" data-perdu="80">
+									<canvas></canvas>
 								</div>
 							</div>
 						</div>
@@ -84,31 +87,43 @@
 							<div class="statsBarContainer">
 								<p>Tie Breaks</p>
 								<div class="tieBreaks statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>Against a top 10</p>
 								<div class="vsTop10 statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>Last set</p>
 								<div class="dernierSet statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>After winning the first set</p>
 								<div class="afterWin1Set statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>After losing the first set</p>
 								<div class="afterLost1Set statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>Against a right-handed</p>
 								<div class="vsDroitier statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
+								</div>
+							</div>
+							<div class="statsBarContainer">
+								<p>Against a left-handed</p>
+								<div class="vsGaucher statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 								</div>
 							</div>
 						</div>
@@ -151,16 +166,19 @@
 							<div class="statsBarContainer">
 								<p>All</p>
 								<div class="tous statsBar" data-gagner="120" data-perdu="36">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>Grand Chelem</p>
 								<div class="grdchelem statsBar" data-gagner="250" data-perdu="10">
+									<canvas></canvas>
 								</div>
 							</div>
 							<div class="statsBarContainer">
 								<p>Masters 1000</p>
 								<div class="masters1000 statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 								</div>
 							</div>
 						</div>
@@ -169,31 +187,37 @@
 						<div class="statsBarContainer">
 							<p>Tie Breaks</p>
 							<div class="tieBreaks statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 							</div>
 						</div>
 						<div class="statsBarContainer">
 							<p>Against a top 10</p>
 							<div class="vsTop10 statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 							</div>
 						</div>
 						<div class="statsBarContainer">
 							<p>Last set</p>
 							<div class="dernierSet statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 							</div>
 						</div>
 						<div class="statsBarContainer">
 							<p>After winning the first set</p>
 							<div class="afterWin1Set statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 							</div>
 						</div>
 						<div class="statsBarContainer">
 							<p>After losing the first set</p>
 							<div class="afterLost1Set statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 							</div>
 						</div>
 						<div class="statsBarContainer">
 							<p>Against a right-handed</p>
 							<div class="vsDroitier statsBar" data-gagner="80" data-perdu="80">
+									<canvas></canvas>
 							</div>
 						</div>
 					</div>
@@ -226,12 +250,16 @@
 					<div>
 						<nav>
 							<ul>
-								<li class="focus">Carriere</li>
-								<li>2013</li>
+								<li class="focus">2013</li>
 								<li>2012</li>
 								<li>2011</li>
 								<li>2010</li>
 								<li>2009</li>
+								<li>2008</li>
+								<li>2007</li>
+								<li>2006</li>
+								<li>2005</li>
+								<li>2004</li>
 							</ul>
 							<div class="rightSelect"><</div>
 							<div class="leftSelect"><</div>
@@ -247,17 +275,23 @@
 					<div class="surface">
 						<img src="img/terrainDur.png"/>
 						<div></div>
-						<div class="statsRounded dur" data-pourcent="30"></div>
+						<div class="dur statsNumber">
+							<h1>21</h1>
+						</div>
 					</div>
 					<div class="surface">
 						<img src="img/terrainClay.png"/>
 						<div class="left"></div>
-						<div class="statsRounded clay" data-pourcent="60"></div>
+						<div class="clay statsNumber">
+							<h1>21</h1>
+						</div>
 					</div>
 					<div class="surface">
 						<img src="img/terrainGrass.png"/>
 						<div></div>
-						<div class="statsRounded grass" data-pourcent="75"></div>
+						<div class="grass statsNumber">
+							<h1>21</h1>
+						</div>
 					</div>
 				</div>
 				<div class="scrollbar">
@@ -319,6 +353,11 @@
 							<li>2011</li>
 							<li>2010</li>
 							<li>2009</li>
+							<li>2008</li>
+							<li>2007</li>
+							<li>2006</li>
+							<li>2005</li>
+							<li>2004</li>
 						</ul>
 						<div></div>
 						<div class="rightSelect"><</div>
@@ -326,28 +365,21 @@
 					</nav>
 					<nav>
 						<ul>
-							<li class="focus">Carriere</li>
-							<li>2013</li>
-							<li>2012</li>
-							<li>2011</li>
-							<li>2010</li>
-							<li>2009</li>
+							<li class="focus">Clay</li>
+							<li>Dur</li>
+							<li>Grass</li>
 						</ul>
 						<div></div>
-						<div class="rightSelect">></div>
+						<div class="rightSelect"><</div>
 						<div class="leftSelect"><</div>
 					</nav>
 					<nav>
 						<ul>
-							<li class="focus">Carriere</li>
-							<li>2013</li>
-							<li>2012</li>
-							<li>2011</li>
-							<li>2010</li>
-							<li>2009</li>
+							<li class="focus">Serving</li>
+							<li>Return</li>
 						</ul>
 						<div></div>
-						<div class="rightSelect">></div>
+						<div class="rightSelect"><</div>
 						<div class="leftSelect"><</div>
 					</nav>
 				</div>
