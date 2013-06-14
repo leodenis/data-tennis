@@ -6148,7 +6148,14 @@
             }
         },
         titre:{
-            
+            2013:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{}
+            },
             2012:{
                 dur:2,
                 terreBattue:0,
@@ -9025,7 +9032,6 @@
                     2:'Doha'
                 }
             },
-
             2012:{
                 dur:1,
                 terreBattue:0,
@@ -9036,7 +9042,14 @@
                     1:'Bangkok'
                 }
             },
-
+            2011:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{}
+            },
             2010:{
                 dur:0,
                 terreBattue:1,
@@ -9046,6 +9059,22 @@
                 lieu:{
                     1:'Nice'
                 }
+            },
+            2009:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{}
+            },
+            2008:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{}
             },
             2007:{
                 dur:1,
@@ -9057,7 +9086,6 @@
                     1:'Mumbai'
                 }
             },
-            
             2006:{
                 dur:0,
                 terreBattue:1,
@@ -9070,7 +9098,6 @@
                     3:'Nottingham'
                 }
             },
-
             2005:{
                 dur:0,
                 terreBattue:0,
@@ -9081,9 +9108,24 @@
                     1:'Nottingham'
                 }
             },
+            2004:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{}
+            }
         },
-
         finales:{
+            2013:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{}
+            },
             2012:{
                 dur:1,
                 terreBattue:1,
@@ -9095,7 +9137,14 @@
                     2:'Estoril'
                 }
             },
-            
+            2011:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{}
+            },
             2010:{
                 dur:1,
                 terreBattue:1,
@@ -9107,7 +9156,14 @@
                     2:'Sydney'
                 }
             },
-            
+            2009:{
+                dur:0,
+                terreBattue:0,
+                gazon:0,
+                carpet:0,
+                nombre:0,
+                lieu:{}
+            },
             2008:{
                 dur:0,
                 terreBattue:1,
@@ -9118,7 +9174,6 @@
                     1:'Stuttgart'
                 }
             },
-
             2007:{
                 dur:1,
                 terreBattue:1,
@@ -9130,7 +9185,6 @@
                     2:'Estoril'
                 }
             },
-
             2006:{
                 dur:1,
                 terreBattue:0,
@@ -9141,7 +9195,6 @@
                     1:'Montreal'
                 }
             },
-
             2005:{
                 dur:0,
                 terreBattue:1,
@@ -9152,7 +9205,6 @@
                     1:'Hamburg'
                 }
             },
-
             2004:{
                 dur:1,
                 terreBattue:0,
@@ -9163,7 +9215,6 @@
                     1:'Metz'
                 }
             }
-
         },
         statService:{
             2013:{

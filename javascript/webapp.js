@@ -100,8 +100,9 @@ $(document).ready( function(){
         $(statsRounded).append('<canvas> </canvas>');
         var canvas = document.querySelector(statsRounded + '>canvas');
         if(taille == true){
-            canvas.width = Math.abs($(statsRounded).height()-12-$(statsRounded).siblings('h3').width());
-            canvas.height = Math.abs($(statsRounded).height()-12-$(statsRounded).siblings('h3').width());
+            console.log($(statsRounded).siblings('h3').width());
+            canvas.width = Math.abs($(statsRounded).parent().width() / 12 * 5 - 100);
+            canvas.height = Math.abs($(statsRounded).parent().width() / 12 * 5 - 100);
         }else{
             canvas.width = Math.abs($(statsRounded).width()-12-$(statsRounded).siblings('img').width());
             canvas.height = Math.abs($(statsRounded).width()-12-$(statsRounded).siblings('img').width());
@@ -131,10 +132,7 @@ $(document).ready( function(){
         //     }
         //     test++;
         //     console.log(test);
-
-        // }      
-
-        
+        // }              
         ctx.arc(canvas.width/2, canvas.width/2, canvas.width/3, 1.5 * (Math.PI*2), 1.5 * (Math.PI*2) - ((Math.PI*2)*$(statsRounded).data('pourcent')/100), true); 
         ctx.strokeStyle="#339cb4";
         ctx.lineWidth = 25;
@@ -151,7 +149,7 @@ $(document).ready( function(){
     var marge = {};
     function selectBar(selector,taille){
         marge[selector] = 0;
-        $(selector + '>div.rightSelect').click(function(){
+        $(selector + '>div.leftSelect').click(function(){
             if(marge[selector] < 0){
                 marge[selector] += 70;
                 $(this).siblings('ul').animate({'margin-left':marge[selector]});
@@ -159,7 +157,7 @@ $(document).ready( function(){
                 changeData($('article>nav>ul>li.active')[0].classList[0]);
             }
         });
-        $(selector + '>div.leftSelect').click(function(){
+        $(selector + '>div.rightSelect').click(function(){
             if(marge[selector] > -(taille * 70)){
                 marge[selector] -= 70;
                 $(this).siblings('ul').animate({'margin-left':marge[selector]});
@@ -262,36 +260,37 @@ $(document).ready( function(){
             }
         })
     }
-
-    countNumber();
-    function countNumber()
-        {
-            centi++;
-            console.log(centi);
-            setTime = setInterval(numb,25);
-        }
-    function numb(){
-            centi++;
-            console.log(centi);
-            document.getElementById("break").innerHTML = centi;
-            if (centi >= breakPoint) {
-                clearInterval(setTime);
-            };
-            document.getElementById("aces").innerHTML = centi;
-            if (centi >= aces) {
-                clearInterval(setTime);
-            };
-            document.getElementById("returnGame").innerHTML = centi;
-            if (centi >= returnGame) {
-                clearInterval(setTime);
-            };
-            document.getElementById("returnGame2").innerHTML = centi;
-            if (centi >= returnGame2) {
-                clearInterval(setTime);
-            };
-    }
+    // var centi = 0 ;
+    // countNumber();
+    // function countNumber()
+    //     {
+    //         centi++;
+    //         console.log(centi);
+    //         setTime = setInterval(numb,25);
+    //     }
+    // function numb(){
+    //         centi++;
+    //         console.log(centi);
+    //         document.getElementById("break").innerHTML = centi;
+    //         if (centi >= breakPoint) {
+    //             clearInterval(setTime);
+    //         };
+    //         document.getElementById("aces").innerHTML = centi;
+    //         if (centi >= aces) {
+    //             clearInterval(setTime);
+    //         };
+    //         document.getElementById("returnGame").innerHTML = centi;
+    //         if (centi >= returnGame) {
+    //             clearInterval(setTime);
+    //         };
+    //         document.getElementById("returnGame2").innerHTML = centi;
+    //         if (centi >= returnGame2) {
+    //             clearInterval(setTime);
+    //         };
+    // }
     function changeData(onglet){
         var urlHere = window.location.toString().match(/#\/([a-z]+)/);
+        console.log(urlHere)
         urlHere = urlHere[1];
         for(l in json){
             if(json[l].nom.toLowerCase().replace(' ','') == urlHere){
@@ -300,9 +299,14 @@ $(document).ready( function(){
                     option.titres = $('#titres nav>ul>li.focus')[0].textContent.toLowerCase();
                 }if ($('article>nav>ul>li.active')[0].classList[0] == "statistique") {
                     option.statistique = {};
-                    option.statistique[0] = $('#statistique nav:first-child>ul>li.focus')[0].textContent.toLowerCase();
-                    option.statistique[1] = $('#statistique nav:nth-child(2)>ul>li.focus')[0].textContent.toLowerCase();
-                    option.statistique[2] = $('#statistique nav:last-child>ul>li.focus')[0].textContent.toLowerCase();
+                    option.statistique[0] = $('#statistique nav:first-child>ul>li.focus')[0].textContent.toLowerCase();///date
+                    option.statistique[1] = $('#statistique nav:nth-child(2)>ul>li.focus')[0].textContent.toLowerCase();//surface
+                    option.statistique[2] = $('#statistique nav:last-child>ul>li.focus')[0].textContent.toLowerCase();//type
+                    if (option.statistique[2] == 'serving') {
+                        option.statistique[2] = 'statService';
+                    }else{
+                        option.statistique[2] = 'statRetourService';
+                    }
                 }if ($('article>nav>ul>li.active')[0].classList[0] == "finales") {
                     option.finales = $('#finales nav>ul>li.focus')[0].textContent.toLowerCase();
                 }
@@ -314,6 +318,11 @@ $(document).ready( function(){
     function parseData(onglet,data){
         $('#container>article>header>img').attr('src','img/player/thumbnails/big/'+ data.nom.toUpperCase().replace(' ','') + '.png')
         $('#container>article>header>div>h1').html( data.nom + ' ' + data.prenom);
+        $('#container>article>header>div>div:nth-child(2)>p:first-child').html('<span>Age : </span>'+ data.age +' ans');
+        $('#container>article>header>div>div:nth-child(2)>p:nth-child(2)').html('<span>Nationalit&eacute; : </span>'+ data.nationalite);
+        $('#container>article>header>div>div:nth-child(2)>p:last-child').html('<span>Taille : </span>'+ data.taille);
+        $('#container>article>header>div>div:last-child>p:first-child').html('<span>Poids : </span>'+ data.poids);
+        $('#container>article>header>div>div:last-child>p:last-child').html('<span>'+ data.lateralite +'</span>');
         if(onglet == 'resume2013'){
             $('#resume2013 div.statsBarContainer>div.statsBar.tous').data('gagner',data.nbMatchGagner[2013].tous.gagner);
             $('#resume2013 div.statsBarContainer>div.statsBar.tous').data('perdu',data.nbMatchGagner[2013].tous.perdu);
@@ -409,6 +418,7 @@ $(document).ready( function(){
             statsRound('#resumeCarriere .statsRounded.grass'); 
             scrollbar('#resumeCarriere>div.scrollbar','#resumeCarriere>div:first-child');
         }else if(onglet == 'titres'){
+            console.log(data)
             $('#titres .statsNumber.dur>h1').html(data.titre[option.titres].dur + ' Titres');
             $('#titres .statsNumber.clay>h1').html(data.titre[option.titres].terreBattue + ' Titres');
             $('#titres .statsNumber.grass>h1').html(data.titre[option.titres].gazon + ' Titres');
@@ -433,6 +443,15 @@ $(document).ready( function(){
             statsNumber('#finales .statsNumber.grass',true);
             scrollbar('#finales>div.scrollbar','#finales>div:nth-child(2)');
         }else if(onglet == "statistique"){
+            $('#statistique>div:nth-child(2)>div:nth-child(1)>div').data('pourcent',data[option.statistique[2]][(option.statistique[1])][(option.statistique[0])])
+            // $('#statistique>div:nth-child(2)>div:nth-child(2)')
+            // $('#statistique>div:nth-child(2)>div:nth-child(3)')
+            // $('#statistique>div:nth-child(2)>div:nth-child(4)')
+            // $('#statistique>div:nth-child(2)>div:nth-child(5)')
+            // $('#statistique>div:nth-child(2)>div:nth-child(6)')
+            // $('#statistique>div:nth-child(2)>div:nth-child(7)')
+            // $('#statistique>div:nth-child(2)>div:nth-child(8)')
+            // $('#statistique>div:nth-child(2)>div:nth-child(9)')
 
             statsRound('#statistique .statsRounded.pgsr1s',true);
             statsRound('#statistique .statsRounded.pgsr2s',true);

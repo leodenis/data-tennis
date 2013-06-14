@@ -47,8 +47,8 @@ section>div>div>h3{font-size:25px;font-weight:bold;margin:30px;}
 #resume2013{width: 100%;height: -webkit-calc(100% - 285px);overflow:hidden;background-image:url(../img/btHover.jpg);float:left;}
 #resume2013>div:first-child{width: -webkit-calc(100% / 5 * 3 );float:left;border-right:1px solid #0a0a0a;}
 #resume2013>div>h3{font-size:25px;font-weight:bold;margin:30px;float: left;}
-#resume2013>div:first-child>p{font-size:15px;width:-webkit-calc(100% / 2 - 200px);float:left;margin:30px 0px;}
-#resume2013>div:first-child>p:first-of-type{margin-left:130px;}
+#resume2013>div:first-child>p{font-size:15px;width:-webkit-calc(100% / 2 - 270px);float:left;margin:30px 0px;}
+#resume2013>div:first-child>p:first-of-type{margin-left:320px;}
 #resume2013>div:first-child>div>div:first-child{border-bottom:1px solid #0a0a0a;}
 #resume2013>div:first-child>div>div:last-child{border-top:1px solid #242424;}
 #resume2013>div:nth-child(2){width: -webkit-calc(100% / 5 * 2 - 12px);float:left;border-left:1px solid #242424;}
@@ -61,8 +61,8 @@ section>div>div>h3{font-size:25px;font-weight:bold;margin:30px;}
 
 #resumeCarriere>div>div:nth-child(2){border-bottom:1px solid #0a0a0a;border-left:1px solid #242424;width: -webkit-calc(100% / 5 * 3 - 1px);height:270px;margin-left: -webkit-calc(100% / 5 * 2 + 1px);}
 #resumeCarriere>div>div:nth-child(2)>p{font-size: 15px;width:-webkit-calc(100% / 2 );}
-#resumeCarriere>div>div:nth-child(2)>p:first-of-type{margin-left: 130px;float: left;text-align: right;}
-#resumeCarriere>div>div:nth-child(2)>p:last-of-type{margin-left: -webkit-calc(100% / 2 + 160px);}
+#resumeCarriere>div>div:nth-child(2)>p:first-of-type{margin-left: 200px;float: left;text-align: right;}
+#resumeCarriere>div>div:nth-child(2)>p:last-of-type{margin-left: -webkit-calc(100% / 2 + 230px);}
 #resumeCarriere>div>div:nth-child(3){border-right:1px solid #0a0a0a;border-top:1px solid #242424;width: -webkit-calc(100% / 5 * 3 );float:left;}
 #resumeCarriere>div>div:nth-child(4){border-left:1px solid #242424;border-top:1px solid #242424;width: -webkit-calc(100% / 5 * 2 );margin-left: -webkit-calc(100% / 5 * 3 + 1px );}
 /*Titres*/
@@ -103,7 +103,9 @@ div:nth-child(2).surface>div>h1{font-size: 45px;text-align:center;}
 #statistique>div:first-child{width:100%;height:60px;background-image:url(../img/btHover.jpg);}
 #statistique>div:first-child>nav{float:left;margin-left:-webkit-calc((100% / 3 - 200px) / 2);}
 #statistique>div{float:left;width:-webkit-calc(100% - 10px);}
-#statistique>div>div>h3{float:left;width:-webkit-calc(100% / 12 * 7);}
+#statistique>div>div>h3{float:left;width:-webkit-calc(100% / 12 * 7);margin-top:60px;}
+#statistique>div>div>canvas{width:-webkit-calc(100% / 12 * 5);}
+#statistique>div>div>h1{width: -webkit-calc(100% / 12 * 4);margin-left: calc(100% / 12 * 7);font-size:45px;font-weight: bolder;margin-top:50px;}
 #statistique>div>div{width:-webkit-calc( 50% - 2px);height:-webkit-calc( 33% - 2px);float:left;border-top:1px solid #0a0a0a;border-left:1px solid #0a0a0a;border-bottom:1px solid #242424;border-right:1px solid #242424;}
 
 
