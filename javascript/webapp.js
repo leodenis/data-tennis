@@ -114,7 +114,7 @@ $(document).ready( function(){
         ctx.lineWidth = 25;
         ctx.stroke();
         ctx.closePath();
-        ctx.font="bold 35px 'proximanova'";
+        ctx.font="bold 30px 'proximanova'";
         ctx.fillStyle = "#fff";
         ctx.fillText($(statsRounded).data('pourcent') + '%',canvas.width/3,canvas.height/7*4);
         textWrite = true;
@@ -307,6 +307,13 @@ $(document).ready( function(){
                     }else{
                         option.statistique[2] = 'statRetourService';
                     }
+                    if (option.statistique[1] == 'clay') {
+                        option.statistique[1] = 'terreBattue';
+                    }else if (option.statistique[1] == 'dur'){
+                        option.statistique[1] = 'dur';
+                    }else if (option.statistique[1] == 'grass'){
+                        option.statistique[1] = 'gazon';
+                    }
                 }if ($('article>nav>ul>li.active')[0].classList[0] == "finales") {
                     option.finales = $('#finales nav>ul>li.focus')[0].textContent.toLowerCase();
                 }
@@ -314,7 +321,8 @@ $(document).ready( function(){
             }
         }
     }
-
+    var rounded = false;
+    var text = '';
     function parseData(onglet,data){
         $('#container>article>header>img').attr('src','img/player/thumbnails/big/'+ data.nom.toUpperCase().replace(' ','') + '.png')
         $('#container>article>header>div>h1').html( data.nom + ' ' + data.prenom);
@@ -443,21 +451,119 @@ $(document).ready( function(){
             statsNumber('#finales .statsNumber.grass',true);
             scrollbar('#finales>div.scrollbar','#finales>div:nth-child(2)');
         }else if(onglet == "statistique"){
-            $('#statistique>div:nth-child(2)>div:nth-child(1)>div').data('pourcent',data[option.statistique[2]][(option.statistique[1])][(option.statistique[0])])
-            // $('#statistique>div:nth-child(2)>div:nth-child(2)')
-            // $('#statistique>div:nth-child(2)>div:nth-child(3)')
-            // $('#statistique>div:nth-child(2)>div:nth-child(4)')
-            // $('#statistique>div:nth-child(2)>div:nth-child(5)')
-            // $('#statistique>div:nth-child(2)>div:nth-child(6)')
-            // $('#statistique>div:nth-child(2)>div:nth-child(7)')
-            // $('#statistique>div:nth-child(2)>div:nth-child(8)')
-            // $('#statistique>div:nth-child(2)>div:nth-child(9)')
+            $('#statistique>div:nth-child(2)>div').remove();
+            var temp = data[option.statistique[2]];
+            temp = temp[option.statistique[0]];
+            temp = temp[option.statistique[1]];
+            for (p in temp) {
+                if(p == 'aces'){
+                    text = 'Aces';
+                    rounded = false;
+                }
+                else if(p == 'doubleFautes'){
+                    text = 'Double faults';
+                    rounded = false;
+                }
+                else if(p == 'premierService'){
+                    text = 'First serve';
+                    rounded = true;
+                }
+                else if(p == 'premierServiceGagner'){
+                    text = 'First serve points won';
+                    rounded = true;
+                }
+                else if(p == 'secondServiceGagner'){
+                    text = 'Second serve points won';
+                    rounded = true;
+                }
+                else if(p == 'nbBreakpointContre'){
+                    text = 'Break point faced';
+                    rounded = false;
+                }
+                else if(p == 'nbJeuxService'){
+                    text = 'Service games played';
+                    rounded = false;
+                }
+                else if(p == 'nbJeuxServiceGagner'){
+                    text = 'Service game won';
+                    rounded = true;
+                }
+                else if(p == 'pointServiceGagner'){
+                    text = 'Service point won';
+                    rounded = true;
+                }
+                else if(p == 'retourPremierServiceGagner'){
+                    text = 'First serve return point won';
+                    rounded = true;
+                }
+                else if(p == 'retourSecondServiceGagner'){
+                    text = 'Second serve return point won';
+                    rounded = true;
+                }
+                else if(p == 'opportuniteBalleBreak'){
+                    text = 'Break points opportunities';
+                    rounded = false;
+                }
+                else if(p == 'convertionBalleBreak'){
+                    text = 'Break points converted';
+                    rounded = true;
+                }
+                else if(p == 'nbJeuxRetourne'){
+                    text = 'Return games played';
+                    rounded = false;
+                }
+                else if(p == 'nbJeuxRetourneGagner'){
+                    text = 'Return games won';
+                    rounded = true;
+                }
+                else if(p == 'nbPointRetourneGagne'){
+                    text = 'Return points won';
+                    rounded = true;
+                }
+                else if(p == 'totalPointGagne'){
+                    text = 'Total points won';
+                    rounded = true;
+                }
+                if (rounded == true) {
+                    console.log(text)
+                    console.log(rounded)
+                    $('#statistique>div:nth-child(2)').append('<div><h3>'+ text +'</h3><div class="statsRounded '+ p +'" data-pourcent="'+ temp[p] +'"></div></div>');
+                    statsRound('#statistique .statsRounded.'+p,true);
+                    rounded = false;
+                }else{
+                    $('#statistique>div:nth-child(2)').append('<div><h3>'+ text +'</h3><h1>'+ temp[p] +'</h1></div>');
+                    console.log(text)
+                    console.log(rounded)
+                }
 
-            statsRound('#statistique .statsRounded.pgsr1s',true);
-            statsRound('#statistique .statsRounded.pgsr2s',true);
-            statsRound('#statistique .statsRounded.obdb',true);
-            statsRound('#statistique .statsRounded.prg',true);
-            statsRound('#statistique .statsRounded.tpgr',true); 
+            };
+            // if(data[option.statistique[2]] == 'statService'){
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('Aces');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>div').data('pourcent',temp.aces)
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('doubleFautes');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(2)>div').data('pourcent',temp.doubleFautes)
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('premierService');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(3)')
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('premierServiceGagner');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(4)>div').data('pourcent',temp.premierServiceGagner)
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('secondServiceGagner');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(5)')
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('nbBreakpointContre');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(6)')
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('nbBreakpointSauver');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(7)>div').data('pourcent',temp.secondServiceGagner)
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('nbJeuxService');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(8)>div').data('pourcent',temp.nbBreakpointContre)
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('nbJeuxServiceGagner');
+            //     $('#statistique>div:nth-child(2)>div:nth-child(9)')  
+            //     $('#statistique>div:nth-child(2)>div:nth-child(1)>h3').html('pointServiceGagner');
+            // }
+
+            // statsRound('#statistique .statsRounded.pgsr1s',true);
+            // statsRound('#statistique .statsRounded.pgsr2s',true);
+            // statsRound('#statistique .statsRounded.obdb',true);
+            // statsRound('#statistique .statsRounded.prg',true);
+            // statsRound('#statistique .statsRounded.tpgr',true); 
             scrollbar('#statistique>div.scrollbar','#statistique>div:nth-child(2)');
         }
     }
