@@ -108,7 +108,7 @@
 		 	 	document.getElementById("changeNamePlayer").innerHTML ="Tomas Berdych"; 
 		 	 	$("#submit").removeAttr("disabled");
 		 	 }
-		 	 else if (search3 == 'juan martin del potro'){
+		 	 else if (search3 == 'juan martin delpotro'){
 		 	 	$('#changeImgPlayer').attr('src','img/player/7_Juan_Martin_DEL_POTRO.png');
 		 	 	document.getElementById("changeNamePlayer").innerHTML ="juan Martin Del Potro";
 		 	 	$("#submit").removeAttr("disabled"); 
@@ -222,7 +222,7 @@
 		 	 	document.getElementById("changeNamePlayer").innerHTML ="Tomas Berdych"; 
 		 	 	$("#submit").removeAttr("disabled");
 		 	 }
-		 	 else if (search2 == 'juan martin del potro'){
+		 	 else if (search2 == 'juan martin delpotro'){
 		 	 	$('#changeImgPlayer').attr('src','img/player/7_Juan_Martin_DEL_POTRO.png');
 		 	 	document.getElementById("changeNamePlayer").innerHTML ="juan Martin Del Potro"; 
 		 	 	$("#submit").removeAttr("disabled");
